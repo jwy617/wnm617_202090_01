@@ -2,7 +2,8 @@
 
 ## Important Links
 - http://jiwonyeom.com
-- http://jiwonyeom.com/aau/wnm617/ji.yeom
+- http://jiwonyeom.com/aau/wnm617/yeom.ji
+- http://jiwonyeom.com/aau/wnm617/yeom.ji/initializr
 
 ## How to commit on Git via Terminal
 - git add .
