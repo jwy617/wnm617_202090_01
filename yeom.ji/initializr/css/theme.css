@@ -1,3 +1,91 @@
-nav li:first-child a {
-	background-color: green;
+/*nav li:first-child a {
+	background-color: white;
+}*/
+
+body {
+	background-color: #B0C4DE;
 }
+
+h1{
+	font-family: 'Georgia', serif;
+	background-color: #5F9EA0;
+}
+h2{
+	font-family: 'Archivo Black', sans-serif;
+	/*box-shadow: 0 5px #0000CD;*/
+	border-left: solid 5px #0000CD;
+	padding-left: 15px;
+}
+
+h3 {
+	font-family: 'Georgia', serif;
+	color: white;
+}
+
+.title {
+	color: #0000CD;
+	font-size: 80px;
+	font-family: 'Anton', sans-serif;
+	background-color: white;
+}
+.title:after {
+    content: ' \263A';
+}
+.title:hover{
+	transform: rotate(20deg); 
+}
+
+p {
+	text-indent: 50px;
+	white-space: break-spaces;
+}
+
+aside {
+	column-width: 100px;
+	word-spacing: 20px;
+	padding: 50px;
+	transform: rotate(10deg);
+	opacity: 70%;
+}
+.main aside {
+	margin-top: 3em;
+	padding-top: 1em;
+	background-color: #B0C4DE;
+    border-top: 10px solid #5F9EA0;
+    border-bottom: 10px solid #5F9EA0;
+}
+.main aside:hover {
+	opacity: 100%;
+	transform: translate(50px, 50px);
+}
+
+nav a {
+    display: block;
+    margin-top: 30px;
+    background: white;
+}
+
+nav a:hover{
+	background-color: inherit;
+	transform: scale(1.5);
+}
+nav a:visited {
+    color: inherit;
+}
+
+
+.header-container{
+	background: white;
+	border-bottom: 20px solid #B0C4DE;
+}
+
+.footer-container{
+	background: #0000CD;
+	border: none;
+}
+.footer-container footer {
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
