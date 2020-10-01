@@ -1,65 +1,191 @@
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Html Page</title>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>doggie voyage</title>
 
-		<link rel="stylesheet" href="css/style.css">
-	</head>
+	<link rel="stylesheet" href="lib/css/jquery.mobile.structure-1.4.5.min.css">
+	<link rel="stylesheet" href="css/app.css">
 
-	<body>
-	<input type="checkbox" id="menu" class="hidden">
-	<header class="navbar">
-		<div class="container display-flex flex-align-center">
-	        <div class="flex-none"><h1>Webpage</h1></div>
+	<script src="lib/js/jquery-2.2.4.min.js"></script>
+	<script src="js.app.js"></script>
 
-	        <div class="flex-stretch"></div>
+	<script src="lib/js/jquery.mobile-1.4.5.min.js"></script>
+</head>
 
-	        <div class="menu-button">
-	        	<label for="menu" style="display:block; padding:0 0.5em">&equiv;</label>
-	        </div>
 
-	        <nav class="nav flex-none">
-	            <ul class="display-flex">
-		            <li><a href="#article1">Link 1</a></li>
-		            <li><a href="#article2">Link 2</a></li>
-		            <li><a href="#article3">Link 3</a></li>
-		            <li><a href="#article4">Link 4</a></li>
-	            </ul>
-	         </nav>
-      </div>
-	</header>
-
-		<div class="container">
-			<article class="article h2" id="article1">
-				<h2>Article 1</h2>
-				<div class="article-body">
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga aliquam, magni, perspiciatis cumque accusamus repellendus ullam, animi optio a dicta ut? Consequuntur, officia consequatur enim. Sint, architecto ratione vitae ab.</p>
-					<p>Nihil eaque beatae, doloribus dicta aliquid magnam ipsum dolorum, nemo tempora molestias sunt sequi sint modi iste suscipit libero, cum voluptate ab corrupti labore exercitationem nisi. Cupiditate nihil dolorum rem?</p>
+<body>
+	<section data-role="page" id="signin-page">
+		<div data-role="main">
+			<div class="flex-stretch display-flex flex-align-center flex-justify-center">
+				<h1>doggie voyage</h1>
+				<!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="icon" style="width: 30vw; height:30vw;"><defs><style>.stroke-thick-center{fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:10px;}</style></defs><path class="stroke-thick-center" d="M25,15H40A35,35,0,0,1,75,50V60A25,25,0,0,1,50,85H25a0,0,0,0,1,0,0V15a0,0,0,0,1,0,0Z"></path><title>letter-capital-d</title></svg>
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="icon" style="width: 30vw; height:30vw;"><polygon points="50 61.88 30.35 10 19.65 10 50 90.11 80.35 10 69.65 10 50 61.88"></polygon><title>letter-capital-v</title></svg> -->
+			</div>
+			<form id="signin-form" data-ajax="false" style="padding: 0.5em">
+				<div class="form-control">
+					<label for="signin-username" class="form-label">Username</label>
+					<input id="signin-username" type="text" class="form-input" data-role="none" placeholder="Type your username">
 				</div>
-			</article>	
-			<article class="article h2" id="article2">
-				<h2>Article 2</h2>
-				<div class="article-body">
-					<p>Nihil eaque beatae, doloribus dicta aliquid magnam ipsum dolorum, nemo tempora molestias sunt sequi sint modi iste suscipit libero, cum voluptate ab corrupti labore exercitationem nisi. Cupiditate nihil dolorum rem?</p>
-					<p>Delectus aperiam consequuntur commodi libero dolorum, quidem reiciendis sunt officiis esse nulla rerum aspernatur praesentium voluptatem quasi totam! Recusandae expedita a, eum officiis excepturi. Sit, tempora! Quisquam, neque consectetur earum.</p>
+				<div class="form-control">
+					<label for="signin-password" class="form-label">Password</label>
+					<input id="signin-password" type="password" class="form-input" data-role="none" placeholder="Type your password">
 				</div>
-			</article>	
-			<article class="article h2" id="article3">
-				<h2>Article 3</h2>
-				<div class="article-body">
-					<p>Delectus aperiam consequuntur commodi libero dolorum, quidem reiciendis sunt officiis esse nulla rerum aspernatur praesentium voluptatem quasi totam! Recusandae expedita a, eum officiis excepturi. Sit, tempora! Quisquam, neque consectetur earum.</p>
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga aliquam, magni, perspiciatis cumque accusamus repellendus ullam, animi optio a dicta ut? Consequuntur, officia consequatur enim. Sint, architecto ratione vitae ab.</p>
+				<div class="form-control">
+					<a href="#list-page" class="form-button">Sign In</a>
 				</div>
-			</article>	
-			<article class="article h2" id="article4">
-				<h2>Article 4</h2>
-				<div class="article-body">
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga aliquam, magni, perspiciatis cumque accusamus repellendus ullam, animi optio a dicta ut? Consequuntur, officia consequatur enim. Sint, architecto ratione vitae ab.</p>
-					<p>Nihil eaque beatae, doloribus dicta aliquid magnam ipsum dolorum, nemo tempora molestias sunt sequi sint modi iste suscipit libero, cum voluptate ab corrupti labore exercitationem nisi. Cupiditate nihil dolorum rem?</p>
-				</div>
-			</article>	
+				<div class="form-control" style="text-align: center; font-size: 0.8em; padding-top: 1em"> Don't have an account? <a href="#signup-page">Sign Up</a>! </div>
+			</form>
+			<div class="flex-stretch"></div>
 		</div>
+	</section>
 
-	</body>
+
+	<section data-role="page" id="signup-page">
+		<div data-role="main">
+			<form id="signup-form" data-ajax="false" style="padding: 0.5em">
+				<div class="form-control">
+					<label for="signup-username" class="form-label">Username</label>
+					<input id="signup-username" type="text" class="form-input" data-role="none" placeholder="username">
+				</div>
+				<div class="form-control">
+					<label for="signup-password" class="form-label">Password</label>
+					<input id="signup-password" type="password" class="form-input" data-role="none" placeholder="password">
+				</div>
+				<div class="form-control">
+					<a href="#list-page" class="form-button">Sign Up</a>
+				</div>
+				<div class="form-control" style="text-align: center; font-size: 0.8em; padding-top: 1em"> Already have an account? <a href="#signin-page">Sign Up</a>! </div>
+			</form>
+		</div>
+	</section>
+
+
+	<section data-role="page" id="recent-page">
+		<div data-role="main">
+			
+		</div>
+		<footer data-role="footer">
+			<ul>
+				<li><a href="#recent-page">Recent</a></li>
+				<li><a href="#list-page">List</a></li>
+				<li><a href="#user-profile-page">Profile</a></li>
+			</ul>
+		</footer>
+	</section>
+
+
+	<section data-role="page" id="list-page">
+		<header data-role="header">
+			<h1>Doggies</h1>
+			<ul>
+				<!-- <li><a href="#">Back</a></li> -->
+				<li class="flex-stretch"></li>
+				<li><a href="#">+</a></li>
+			</ul>		
+		</header>
+		<div data-role="main">
+			<ul class="list">
+				<li><a href="#animal-profile-page">Doggie 1</a></li>
+				<li><a href="#animal-profile-page">Doggie 2</a></li>
+				<li><a href="#animal-profile-page">Doggie 3</a></li>
+				<li><a href="#animal-profile-page">Doggie 4</a></li>
+				<li><a href="#animal-profile-page">Doggie 5</a></li>
+				<li><a href="#animal-profile-page">Doggie 6</a></li>
+				<li><a href="#animal-profile-page">Doggie 7</a></li>
+				<li><a href="#animal-profile-page">Doggie 8</a></li>
+				<li><a href="#animal-profile-page">Doggie 9</a></li>
+				<li><a href="#animal-profile-page">Doggie 10</a></li>
+			</ul>
+		</div>
+		<footer data-role="footer">
+			<ul>
+				<li><a href="#recent-page">Recent</a></li>
+				<li><a href="#list-page">List</a></li>
+				<li><a href="#user-profile-page">Profile</a></li>
+			</ul>
+		</footer>
+	</section>
+
+
+	<section data-role="page" id="user-profile-page">
+		<div data-role="main">
+			<form id="user-profile-form" data-ajax="false" style="padding: 0.5em">
+				<h1>Name</h1>
+				<p>Doggie lover</p>
+
+				<div class="form-control">
+					<label for="user-profile-name" class="form-label">Name</label>
+					<input id="user-profile-name" type="text" class="form-input" data-role="none" placeholder="Name">
+				</div>
+				<div class="form-control">
+					<label for="user-profile-nickname" class="form-label">Nickname</label>
+					<input id="user-profile-nickname" type="text" class="form-input" data-role="none" placeholder="Nickname">
+				</div>
+				<div class="form-control">
+					<label for="user-profile-email" class="form-label">Email</label>
+					<input id="user-profile-email" type="text" class="form-input" data-role="none" placeholder="Email">
+				</div>
+				<div class="form-control">
+					<label for="user-profile-password" class="form-label">*********</label>
+					<input id="user-profile-password" type="password" class="form-input" data-role="none" placeholder="Password">
+				</div>
+				<div class="form-control">
+					<label for="user-profile-notes" class="form-label">Notes</label>
+					<input id="user-profile-notes" type="text" class="form-input" data-role="none" placeholder="Notes">
+				</div>
+			</form>
+		</div>
+		<footer data-role="footer">
+			<ul>
+				<li><a href="#recent-page">Recent</a></li>
+				<li><a href="#list-page">List</a></li>
+				<li><a href="#user-profile-page">Profile</a></li>
+			</ul>
+		</footer>
+	</section>
+
+
+	<section data-role="page" id="animal-profile-page">
+		<header data-role="header">
+			<h1>Doggie Profile</h1>
+		</header>
+		<div data-role="main">
+			<ul>
+				<li><a href="#" data-rel="back">Back</a></li>
+				<li class="flex-stretch"></li>
+				<li><a href="#animal-profile-edit-page" data-rel="edit">Edit</a></li>
+			</ul>
+			<form id="animal-profile-form" data-ajax="false" style="padding: 0.5em">
+				<div class="form-control">
+					<label for="animal-profile-name" class="form-label">Name</label>
+					<input id="animal-profile-name" type="text" class="form-input" data-role="none" placeholder="Name">
+				</div>
+				<div class="form-control">
+					<label for="animal-profile-type" class="form-label">Type of the dog</label>
+					<input id="animal-profile-type" type="text" class="form-input" data-role="none" placeholder="Type of the dog">
+				</div>
+				<div class="form-control">
+					<label for="animal-profile-size" class="form-label">Size</label>
+					<input id="animal-profile-size" type="text" class="form-input" data-role="none" placeholder="Size">
+				</div>
+				<div class="form-control">
+					<label for="animal-profile-color" class="form-label">Color</label>
+					<input id="animal-profile-color" type="text" class="form-input" data-role="none" placeholder="Color">
+				</div>
+			</form>
+		</div>
+	</section>
+
+
+	<section data-role="page" id="animal-profile-edit-page">
+		<header data-role="header">
+			<h1>Edit Doggie Profile</h1>
+		</header>
+		<div data-role="main">
+
+		</div>
+	</section>	
+
+</body>
 </html>
