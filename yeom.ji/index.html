@@ -6,6 +6,9 @@
 
 	<link rel="stylesheet" href="lib/css/jquery.mobile.structure-1.4.5.min.css">
 	<link rel="stylesheet" href="css/app.css">
+	<link href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 
 	<script src="lib/js/jquery-2.2.4.min.js"></script>
 	<script src="js/app.js"></script>
@@ -19,7 +22,8 @@
 	<section data-role="page" id="signin-page">
 		<div data-role="main">
 			<div class="flex-stretch display-flex flex-align-center flex-justify-center">
-				<h1>doggie voyage</h1>
+				<img src="img/logo_1_ver.png">
+				<!-- <h1>doggie voyage</h1> -->
 			</div>
 			<form id="signin-form" data-ajax="false" style="padding: 0.5em">
 				<div class="form-control">
@@ -33,7 +37,8 @@
 				<div class="form-control">
 					<input type="submit" data-role="none" class="form-button" value="Sign In">
 				</div>
-				<div class="form-control" style="text-align: center; font-size: 0.8em; padding-top: 1em"> Don't have an account? <a href="#signup-page">Sign Up</a></div>
+				<div class="form-control" style="text-align: center; font-size: 0.8em; padding-top: 1em"> Don't have an account? <a href="#signup-page">Sign Up</a>
+				</div>
 			</form>
 			<div class="flex-stretch"></div>
 		</div>
@@ -48,13 +53,22 @@
 					<input id="signup-username" type="text" class="form-input" data-role="none" placeholder="username">
 				</div>
 				<div class="form-control">
+					<label for="signup-email" class="form-label">Email</label>
+					<input id="signup-email" type="email" class="form-input" data-role="none" placeholder="email">
+				</div>
+				<div class="form-control">
 					<label for="signup-password" class="form-label">Password</label>
 					<input id="signup-password" type="password" class="form-input" data-role="none" placeholder="password">
 				</div>
 				<div class="form-control">
-					<a href="#list-page" class="form-button">Sign Up</a>
+					<label for="signup-reenter-password" class="form-label">Re-enter Password</label>
+					<input id="signup-reenter-password" type="password" class="form-input" data-role="none" placeholder="re-enter password">
 				</div>
-				<div class="form-control" style="text-align: center; font-size: 0.8em; padding-top: 1em"> Already have an account? <a href="#signin-page">Sign In</a></div>
+				<div class="form-control">
+					<a href="#list-page" class="form-button">Create An Account</a>
+				</div>
+				<div class="form-control" style="text-align: center; font-size: 0.8em; padding-top: 1em"> Already have an account? <a href="#signin-page">Sign In</a>
+				</div>
 			</form>
 		</div>
 	</section>
@@ -62,7 +76,20 @@
 
 	<section data-role="page" id="recent-page">
 		<div data-role="main">
-			
+			<div class="floater right top">
+				<div class="btn-circle" data-toggle="#recent-drawer">&plus;</div>
+			</div>
+			<div class="floater right top-second">
+				<div class="btn-circle"><span class="material-icons current-location">my_location</span></div>
+			</div>
+			<div class="modal" id="recent-drawer">
+				<div class="modal-drawer left">
+					<div class="modal-head">Add Current Activity</div>
+					<div class="modal-body">
+						Links
+					</div>
+				</div>
+			</div>
 		</div>
 		<footer data-role="footer">
 			<ul>
@@ -124,84 +151,125 @@
 
 		<div class="modal" id="list-add-animal">
 			<div class="modal-back" data-deactivate="#list-add-animal"></div>
-			<div class="modal-popup">
-				<div class="modal-head">Head</div>
-				<div class="modal-body">Body</div>
-				<div class="modal-foot">Foot</div>
-			</div>
+			<form class="modal-popup" id="list-add-animal-form" data-ajax="false">
+				<div class="modal-head"><h1>Add New Doggie</h1></div>
+				<div class="modal-body">
+					<div class="form-control">
+						<label for="list-add-name" class="form-label">Doggie Name</label>
+						<input id="list-add-name" type="text" class="form-input" data-role="none">
+					</div>
+					<div class="form-control">
+						<label for="list-add-type" class="form-label">Doggie Type</label>
+						<input id="list-add-type" type="text" class="form-input" data-role="none">
+					</div>
+					<div class="form-control">
+						<label for="list-add-size" class="form-label">Doggie Size</label>
+						<input id="list-add-size" type="text" class="form-input" data-role="none">
+					</div>
+					<div class="form-control">
+						<label for="list-add-color" class="form-label">Doggie Color</label>
+						<input id="list-add-color" type="text" class="form-input" data-role="none">
+					</div>
+				</div>
+				<div class="modal-foot">
+					<input type="submit" value="Save" data-role="none" class="form-button">
+				</div>
+			</form>
 		</div>
 	</section>
 
 
 	<section data-role="page" id="user-profile-page">
+		<header data-role="header">
+			<ul>
+				<li><a href="#" data-rel="back">Back</a></li>
+				<li class="flex-stretch"></li>
+			</ul>		
+		</header>
 		<div data-role="main">
-			<form id="user-profile-form" data-ajax="false" style="padding: 0.5em">
-				<h1>Name</h1>
+		<div class="overscroll">
+			<div class="profile-user">
+				<img src="img/avatar_expample.png" alt="avatar" class="profile-avatar" >
+				<h1>Ellie Miles</h1>
 				<p>Doggie lover</p>
-					<ul>
+			</div>
+			<form id="user-profile-form" data-ajax="false" style="padding: 0.5em">
+<!-- 					<ul>
 						<li><a href="#">Edit</a></li>
 						<li class="flex-stretch"></li>
 						<li><a href="#" class="js-logout">Logout</a></li>
-					</ul>
+					</ul> -->
 
 				<div class="form-control">
 					<label for="user-profile-name" class="form-label">Name</label>
-					<input id="user-profile-name" type="text" class="form-input" data-role="none" placeholder="Name">
+					<input id="user-profile-name" type="text" class="form-input" data-role="none" placeholder="Ellie Miles">
 				</div>
 				<div class="form-control">
 					<label for="user-profile-nickname" class="form-label">Nickname</label>
-					<input id="user-profile-nickname" type="text" class="form-input" data-role="none" placeholder="Nickname">
+					<input id="user-profile-nickname" type="text" class="form-input" data-role="none" placeholder="Doggie lover">
 				</div>
 				<div class="form-control">
 					<label for="user-profile-email" class="form-label">Email</label>
-					<input id="user-profile-email" type="text" class="form-input" data-role="none" placeholder="Email">
+					<input id="user-profile-email" type="text" class="form-input" data-role="none" placeholder="email@email.com">
 				</div>
 				<div class="form-control">
-					<label for="user-profile-password" class="form-label">*********</label>
-					<input id="user-profile-password" type="password" class="form-input" data-role="none" placeholder="Password">
+					<label for="user-profile-password" class="form-label">Password</label>
+					<input id="user-profile-password" type="password" class="form-input" data-role="none" placeholder="*********">
 				</div>
 				<div class="form-control">
 					<label for="user-profile-notes" class="form-label">Notes</label>
-					<input id="user-profile-notes" type="text" class="form-input" data-role="none" placeholder="Notes">
+					<!-- <input id="user-profile-notes" type="text" class="form-input" data-role="none" placeholder="Notes"> -->
+					<textarea id="user-profile-notes" type="text" class="form-input" data-role="none" rows="6" cols="50">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</textarea>
+				</div>
+				<div class="form-control">
+					<ul style="list-style-type: none; display: inline-flex">
+						<li><button data-role="none" class="form-button"><a href="#">Edit</a></button></li>
+						<li class="flex-stretch"></li>
+						<li><button data-role="none" class="form-button"><a href="#" class="js-logout">Logout</a></button></li>
+						<li><button data-role="none" class="form-button"><a href="#">Delete</a></button></li>
+					</ul>
 				</div>
 			</form>
 		</div>
-		<footer data-role="footer">
+		</div>
+<!-- 		<footer data-role="footer">
 			<ul>
 				<li><a href="#recent-page">Recent</a></li>
 				<li><a href="#list-page">List</a></li>
 				<li><a href="#user-profile-page">Profile</a></li>
 			</ul>
-		</footer>
+		</footer> -->
 	</section>
 
 
 	<section data-role="page" id="animal-profile-page">
 		<header data-role="header">
 			<h1>Doggie Profile</h1>
-		</header>
-		<div data-role="main">
 			<ul>
 				<li><a href="#" data-rel="back">Back</a></li>
 				<li class="flex-stretch"></li>
-				<li><a href="#animal-profile-edit-page" data-rel="edit">Edit</a></li>
-			</ul>
+			</ul>	
+		</header>
+		<div data-role="main">
 			<form id="animal-profile-form" data-ajax="false" style="padding: 0.5em">
 				<div class="form-control">
-					<label for="animal-profile-name" class="form-label">Name</label>
+					<label for="animal-profile-name" class="form-label">Doggie Name</label>
 					<input id="animal-profile-name" type="text" class="form-input" data-role="none" placeholder="Name">
 				</div>
 				<div class="form-control">
-					<label for="animal-profile-type" class="form-label">Type of the dog</label>
+					<label for="animal-profile-type" class="form-label">Doggie Type</label>
 					<input id="animal-profile-type" type="text" class="form-input" data-role="none" placeholder="Type of the dog">
 				</div>
 				<div class="form-control">
-					<label for="animal-profile-size" class="form-label">Size</label>
+					<label for="animal-profile-size" class="form-label">Doggie Size</label>
 					<input id="animal-profile-size" type="text" class="form-input" data-role="none" placeholder="Size">
 				</div>
 				<div class="form-control">
-					<label for="animal-profile-color" class="form-label">Color</label>
+					<label for="animal-profile-color" class="form-label">Doggie Color</label>
 					<input id="animal-profile-color" type="text" class="form-input" data-role="none" placeholder="Color">
+				</div>
+				<div class="form-control">
+					<button data-role="none" class="form-button"><a href="#animal-profile-edit-page">Edit</a></button>
 				</div>
 			</form>
 		</div>
@@ -211,6 +279,10 @@
 	<section data-role="page" id="animal-profile-edit-page">
 		<header data-role="header">
 			<h1>Edit Doggie Profile</h1>
+			<ul>
+				<li><a href="#" data-rel="back">Back</a></li>
+				<li class="flex-stretch"></li>
+			</ul>
 		</header>
 		<div data-role="main">
 

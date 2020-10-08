@@ -1,8 +1,8 @@
 
 
 const checkSigninForm = () => {
-	let user = $("signin-username").val();
-	let pass = $("signin-password").val();
+	let user = $("#signin-username").val();
+	let pass = $("#signin-password").val();
 
 	console.log(user,pass)
 
@@ -19,7 +19,6 @@ const checkSigninForm = () => {
 	// ASSIGNMENT -> how to tell user if they fail signin?
 
 	checkUserId();
-
 }
 
 const checkUserId = () => {
@@ -28,7 +27,7 @@ const checkUserId = () => {
 	if(sessionStorage.userId === undefined) {
 		// not logged in
 		if(!p.some(o=>window.location.hash===o))
-			$.mobile.navigate("#signin-page")
+			$.mobile.navigate("#signin-page");
 	} else {
 		// logged in
 		if(p.some(o=>window.location.hash===o))
