@@ -22,6 +22,10 @@
 	--color-white: #fff;
 	--color-black: #222330;
 
+	--color-error: #D72222;
+	--color-warning: #FFD23F;
+	--color-success: #228572;
+
 	--header-height: 3rem;
 }
 
@@ -29,6 +33,7 @@ body {
 	margin: 0;
 	font-size: 100%;
 	font-family: 'Roboto', sans-serif;
+	/*background-color: var(--color-neutral-lighter);	*/
 }
 
 h1,
@@ -85,7 +90,12 @@ a {
 .flex-justify-center { justify-content: center; }
 .flex-align-center { align-items: center; }
 
-
+/*
+.flex-container {
+	display: flex;
+	justify-content: center;
+}
+*/
 
 
 
@@ -109,21 +119,25 @@ a {
 	display: inline-block;
 	border-width: 0;
 	background-color: var(--color-neutral-lighter);
-	padding: 0.5em 1em;
-	border-radius: 0.2em;
+	padding: 0.7em 1em;
+	border-radius: 0.3em;
 	font: inherit;
 	/*font-size: 0.8em;*/
 	outline: 0;
+}
+.form-input:focus{
+	cursor: pointer;
+	background-color: var(--color-neutral-light);
 }
 .form-button{
 	width: 100%;
 	display: inline-block;
 	border-width: 0;
-	background-color: var(--color-neutral-light);
-	padding: 0.5em 1em;
-	border-radius: 0.2em;
+	background-color: var(--color-main-medium);
+	padding: 0.7em 1em;
+	border-radius: 0.3em;
 	font: inherit;
-	color: var(--color-main-medium);
+	color: var(--color-white);
 	font-weight: bold;
 	outline: 0;
 	text-align: center;
@@ -133,7 +147,17 @@ a {
 	text-decoration: none;
 	cursor: pointer;
 }
-
+.form-search {
+	width: 100%;
+	display: inline-block;
+	border-width: 0;
+	background-color: var(--color-white);	
+	padding: 0.7em 1em;
+	border-radius: 0.2em;
+	font: inherit;
+	/*font-size: 0.8em;*/
+	outline: 0;
+}
 
 
 
@@ -156,8 +180,8 @@ a {
 .ui-header, 
 .ui-footer {
 	flex: none;
-	height: var(--header-height);
-	line-height: var(--header-height);
+	height: 3.5em;
+	line-height: 3.5em;
 	border-width: 0;
 	background-color: var(--color-white);
 	box-shadow: 0 0 5px rgba(0,0,0,0.15);
@@ -210,17 +234,20 @@ a {
 /* PAGE SPECIFICS */
 #signin-page [data-role='main'] {
 	display: flex;
-/*	align-items: center;
-	justify-content: center;*/
 	flex-direction: column;
 }
 #signup-page [data-role='main'] {
 	display: flex;
-	align-items: center;
-	justify-content: center;
+	flex-direction: column;
+}
+#forgot-page [data-role='main'] {
+	display: flex;
+/*	align-items: center;
+	justify-content: center;*/
+	flex-direction: column;
 }
 #recent-page [data-role='main'] {
-	background-image: url('../img/map.png'); 
+	background-image: url('../img/map_2.png'); 
 	background-position: center;
 	background-size: cover;
 }
@@ -267,24 +294,24 @@ a {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%,calc(-50% + 3em));
-	widows: 80vmin;
+	width: 90vmin;
 	transition: all 0.3s;
 }
 .modal.active .modal-popup {
 	transform: translate(-50%,-50%);
-	pointer-events:initial;
+	pointer-events: initial;
 }
 .modal-head,
 .modal-foot {
 	background-color: var(--color-neutral-lighter);
-	padding: 0.5em 1em;
+	padding: 1em;
 }
 .modal-body {
 	background-color: var(--color-white);
 	padding: 1em;
 }
 .modal-head h1 {
-	font-size: 1em;
+	font-size: 1.2em;
 	margin: 0;
 }
 
@@ -325,6 +352,35 @@ a {
    flex: 1 1 100%;
 }
 
+/*WARNING*/
+.modal-toast {
+	position: absolute;
+	width: 60%;
+	min-height: var(--header-height);
+	background-color: var(--color-error);
+	color: var(--color-white);
+	border-radius: 0.3em;
+	box-shadow: 1px 1px 5px rgba(0,0,0,0.15);
+	left: 50%;
+	text-align: center;
+	padding: 1em;
+	transition: all 0.3s;
+}
+.modal-toast.center {
+	top: 22em;
+	transform: translate(-50%, -1em);
+}
+.modal-toast.bottom {
+	bottom: 1em;
+	transform: translate(-50%, -1em);
+}
+.modal.active .modal-toast {
+	transform: translate(-50%, 0);
+	pointer-events: initial;
+}
+
+/*SUCCESS*/
+
 
 
 
@@ -334,7 +390,7 @@ a {
 .floater.right { right: 1em; }
 .floater.left { left: 1em; }
 .floater.top { top: 1em; }
-.floater.top-second { top: 5em; }
+.floater.bottom-second { bottom: 5em; }
 .floater.bottom { bottom: 1em; }
 
 
@@ -353,6 +409,13 @@ a {
 	box-shadow: 2px 2px 5px rgba(0,0,0,0.15);
 }
 
+.btn-back {
+	color: var(--color-main-medium);
+	font-size: 0.8em;
+}
+
+
+
 
 /*GOOGLE ICONS*/
 .material-icons {
@@ -368,11 +431,36 @@ a {
 	white-space: nowrap;
 	direction: ltr;
 }
-.current-location {
+.icon-current-location {
 	position: absolute;
 	top: 50%;
 	bottom: 50%;
 	transform: translate(-50%,calc(-50% - 0.5em));
+}
+.icon-location {
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%,calc(-50% - 0.5em));
+	color: var(--color-main-medium);
+}
+.icon-location-2 {
+	position: absolute;
+	top: 74%;
+	left: 20%;
+	color: var(--color-main-medium);
+}
+.icon-location-3 {
+	position: absolute;
+	top: 60%;
+	left: 75%;
+	color: var(--color-main-medium);
+}
+.icon-location-4 {
+	position: absolute;
+	top: 20%;
+	left: 60%;
+	color: var(--color-main-medium);
 }
 
 
@@ -391,3 +479,82 @@ a {
 	margin-bottom: 3em;*/
 	width: 30%;
 }
+
+
+/* Profile */
+.dog-profile-image img {
+	margin: 0;
+	padding: 0;
+	object-fit: cover;
+}
+.user-profile-image img {
+	width: calc(50vmin - 2em);
+	height: calc(50vmin - 2em);
+	margin: 1.5em;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+
+
+
+/* SETTINGS */
+.settings-list {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+.settings-list a {
+	padding: 1.5em;
+}
+.settings-list li:not(:first-child) {
+	border-top: 1px solid var(--color-neutral-light);
+}
+.settings-list a {
+	display: block;
+	position: relative;
+}
+.settings-list a:not([href='#'])::after {
+	position: absolute;
+	content: '>';
+	top: 50%;
+	right: 2em;
+	transform: translateY(-50%);
+	color: var(--color-main-medium);
+}
+
+
+
+
+
+/* ANIMAL LIST */
+/*.animallist {
+	display: flex;
+	flex-direction: column;
+}*/
+.animallist-icon img {
+	width: 150px;
+	height: 100px;
+	vertical-align: text-bottom;
+	object-fit: cover;
+}
+.animallist-item {
+	display: flex;
+	margin: 1em;
+	background-color: var(--color-white);
+	box-shadow: 2px 2px 10px rgba(0,0,0,0.15);
+	border-radius: 0.3em;
+	overflow: hidden;
+}
+.animallist-description {
+	padding: 0.5em;
+	flex: 1 1 auto;
+	widows: 100%;
+}
+.animallist-name {
+	font-size: 1.2em;
+	font-weight: bold;
+	font-family: 'Chivo', sans-serif;
+}
+
+
