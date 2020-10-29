@@ -55,6 +55,7 @@
 
 	<section data-role="page" id="signup-page">
 		<div data-role="main">
+		<div class="overscroll">
 			<div class="flex-stretch display-flex flex-align-center flex-justify-center">
 				<h1 style="text-align: center; line-height: 1.5em">Join <br><span style="color: var(--color-main-medium)">Doggie Voyage</span><br> Today!</h1>
 			</div>
@@ -82,6 +83,7 @@
 				</div>
 			</form>
 			<div class="flex-stretch"></div>
+		</div>
 		</div>
 	</section>
 
@@ -158,6 +160,7 @@
 				<li><a href="#user-profile-page">Profile</a></li>
 			</ul>
 		</footer>
+
 		<div class="modal" id="map-add-animal">
 			<div class="modal-back" data-deactivate="#map-add-animal"></div>
 			<form class="modal-popup" id="map-add-animal-form" data-ajax="false">
@@ -201,10 +204,10 @@
 			</ul>		
 		</header> -->
 		<div data-role="main">
-			<form class="form-control" id="doggie-search" data-ajax="false" style="padding: 0 1em">
+			<form class="form-control" id="doggie-search-list" data-ajax="false" style="padding: 0 1em">
 				<input type="search" class="form-search" style="background-color: var(--color-neutral-lighter);" data-role="none" placeholder="Search your doggies">
 			</form>
-			<div class="overscroll">
+			<div class="overscroll" style="padding-bottom: calc(2 * var(--header-height))">
 				<div class="animallist display-flex flex-justify-center">
 					<div class="animallist-item">
 						<!-- <a href="#animal-profile-page"> -->
@@ -283,7 +286,7 @@
 						</div>
 						<div class="animallist-description">
 							<div class="animallist-name">Izzy</div>
-							<div class="animallist-breed" style="padding-top: 0.5em">Doberman</div>
+							<div class="animallist-breed" style="padding-top: 0.5em">Chihuahua</div>
 						</div>
 						</a>
 					</div>
@@ -319,13 +322,12 @@
 						</div>
 						<div class="animallist-description">
 							<div class="animallist-name">Cooper</div>
-							<div class="animallist-breed" style="padding-top: 0.5em">Chihuahua</div>
+							<div class="animallist-breed" style="padding-top: 0.5em">Doberman</div>
 						</div>
 						</a>
 					</div>
 				</div>
-				<!-- <ul class="list"> -->
-				<!-- li*10>a[href=#animal-profile-page]>{Animal $} -->
+
 			</div>
 		</div>
 		<footer data-role="footer">
@@ -424,7 +426,7 @@
 		</header>
 		<div data-role="main">
 		<div class="overscroll">
-			<form id="animal-profile-form" data-ajax="false" style="padding: 0.5 1em">
+			<form id="animal-profile-form-edit" data-ajax="false" style="padding: 0.5 1em">
 				<div class="dog-profile-image display-flex flex-justify-center" style="opacity: 50%;">
 					<img src="img/doggie_8.jpg" alt="avatar">
 				</div>
@@ -437,7 +439,7 @@
 				</div>
 				<div class="form-control">
 					<label for="animal-profile-type" class="form-label">Doggie Type</label>
-					<input id="animal-profile-type" type="text" class="form-input" data-role="none" placeholder="Type of the dog" value="Golen Retriever">
+					<input id="animal-profile-type" type="text" class="form-input" data-role="none" placeholder="Type of the dog" value="Golden Retriever">
 				</div>
 				<div class="form-control">
 					<label for="animal-profile-size" class="form-label">Doggie Size</label>
@@ -448,7 +450,7 @@
 					<input id="animal-profile-color" type="text" class="form-input" data-role="none" placeholder="Color" value="Brown">
 				</div>
 				<div class="form-control">
-					<button data-role="none" class="form-button"><a href="#" data-rel="back">Save</a></button>
+					<a href="#" data-rel="back"><button data-role="none" class="form-button">Save</button></a>
 				</div>
 			</form>
 		</div>
@@ -458,19 +460,20 @@
 
 	<section data-role="page" id="user-profile-page">
 		<div data-role="main">
+			<div class="overscroll">
 			<div class="profile-user">
 				<div class="user-profile-image display-flex flex-justify-center">
 					<img src="img/avatar_expample_2.png" alt="avatar" >
 				</div>
 				<h1>Ellie Miles</h1>
 				<p>Doggie lover</p>
-				<p>@hahahoho</p>
 			</div>
 			<ul class="settings-list">
 				<li><a href="#user-profile-edit-page">Edit Profile</a></li>
 				<li><a href="#user-password-edit-page">Change Password</a></li>
 				<li><a href="#" class="js-logout">Logout</a></li>
 			</ul>
+		</div>
 		</div>
 		<footer data-role="footer">
 			<ul>
@@ -492,7 +495,7 @@
 		</header>
 		<div data-role="main">
 		<div class="overscroll">
-			<form id="user-profile-form" data-ajax="false" style="padding: 0.5em">
+			<form id="user-profile-form" data-ajax="false" style="padding: 0.5 1em">
 				<div class="user-profile-image display-flex flex-justify-center">
 					<img src="img/avatar_expample_2.png" alt="avatar" >
 				</div>
@@ -541,7 +544,7 @@
 		</header>
 		<div data-role="main">
 		<div class="overscroll">
-			<form id="user-password-form" data-ajax="false" style="padding: 0.5em">
+			<form id="user-password-form" data-ajax="false" style="padding: 0.5 1em">
 				<div class="form-control">
 					<label for="current-password" class="form-label">Current Password</label>
 					<input id="current-password" type="text" class="form-input" data-role="none" placeholder="">
@@ -573,7 +576,6 @@
 					<button data-role="none" class="form-button">Save</button>
 					</a>
 				</div> -->
-			</form>
 		</div>
 		</div>
 	</section>
