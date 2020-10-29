@@ -37,12 +37,39 @@ function makeQuery($c,$ps,$p,$makeResults=true) {
 			"result"=>$r
 		];
 	} catch (PDOException $e) {
-		return['error'=>'Query Failed: '.$e->getMessage()];
+		return[
+			'error'=>'Query Failed: '.$e->getMessage()
+		];
 	}
 }
 
 
+
+function makeStatement($data) {
+	$c = makeConn();
+	$t = $data->type;
+	$p = $data->params;
+
+	switch($t) {
+
+		case "user_all":
+			return makeQuery($c, "SELECT" *FROM `track_users`",$p");
+		case "animals_all":
+			return makeQuery($c, "SELECT" *FROM `track_animals`",$p");
+		case "locations_all":
+			return makeQuery($c, "SELECT" *FROM `track_locations`",$p");
+		
+		default: return ["error"=>"No Matched Type"];
+	}
+}
+
+
+$type = isset($_GET['type']) ? $_GET['type'] : '';
+
+
 echo json_encode(
-	makeQuery(makeConn(),"SELECT * FROM track_users",[]),
+	makeStatement(
+		(object)["type"=>$type,"params"=>[]]
+	),
 	JSON_NUMERIC_CHECK
 );
