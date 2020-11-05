@@ -468,7 +468,7 @@ a {
 
 /*AVATAR*/
 .profile-user {
-	background-color: black;
+	background-color: var(--color-neutral-light);
 	color: white;
 	text-align: center;
 	padding: 3em 0 1em;

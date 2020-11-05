@@ -8,7 +8,7 @@ const makeWarning = (target,message) => {
 }
 
 
-const checkSigninForm = () => {
+const checkSigninForm = async() => {
 	let user = $("#signin-username").val();
 	let pass = $("#signin-password").val();
 
@@ -19,10 +19,15 @@ const checkSigninForm = () => {
 
 	console.log(user,pass)
 
-	if(user == 'user' && pass == 'pass') {
+	let found_user = await query({
+		type:'check_signin',
+		params:[user,pass]
+	});
+
+	if(found_user.result.length > 0) {
 		// logged in
-		console.log("sucess");
-		sessionStorage.userId = 3;
+		console.log("success");
+		sessionStorage.userId = found_user.result[0].id;
 
 		$("#signin-form")[0].reset();
 	} else {
@@ -30,12 +35,12 @@ const checkSigninForm = () => {
 		console.log("failure");
 		sessionStorage.removeItem('userId');
 
-	// ASSIGNMENT -> how to tell user if they fail signin?
 		makeWarning("#signin-warning","Incorrect Username or Password")
 	}
 
 	checkUserId();
 }
+
 
 const checkUserId = () => {
 	let p = ['#signin-page','#signup-page',''];

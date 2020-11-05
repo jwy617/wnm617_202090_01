@@ -4,11 +4,14 @@ function makeConn() {
 	include_once "auth.php";
 	try {
 		$conn = new PDO(...Auth());
-		$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		return $conn;
+		$conn->setAttribute(
+			PDO::ATTR_ERRMODE, 
+			PDO::ERRMODE_EXCEPTION
+		);
 	} catch (PDOException $e) {
-		die('{"error":"Connection Error: '.$e->getMessage().'"}');
+		die('{"error":"'.$e->getMessage().'"}');
 	}
+	return $conn;
 }
 
 
@@ -23,7 +26,7 @@ function fetchAll($r) {
 
 // connection, prepared statement, parameters
 function makeQuery($c,$ps,$p,$makeResults=true) {
-	try{
+	try {
 		if(count($p)) {
 			$stmt = $c->prepare($ps);
 			$stmt->execute($p);
@@ -36,9 +39,10 @@ function makeQuery($c,$ps,$p,$makeResults=true) {
 		return[
 			"result"=>$r
 		];
+
 	} catch (PDOException $e) {
-		return[
-			'error'=>'Query Failed: '.$e->getMessage()
+		return [
+			"error"=>"Query Failed: ".$e->getMessage()
 		];
 	}
 }
@@ -52,24 +56,41 @@ function makeStatement($data) {
 
 	switch($t) {
 
-		case "user_all":
-			return makeQuery($c, "SELECT" *FROM `track_users`",$p");
+		case "users_all":
+			return makeQuery($c, "SELECT * FROM `track_users`",$p);
 		case "animals_all":
-			return makeQuery($c, "SELECT" *FROM `track_animals`",$p");
+			return makeQuery($c, "SELECT * FROM `track_animals`",$p);
 		case "locations_all":
-			return makeQuery($c, "SELECT" *FROM `track_locations`",$p");
+			return makeQuery($c, "SELECT * FROM `track_locations`",$p);
 		
+
+		case "user_by_id":
+			return makeQuery($c,"SELECT & FROM 'track_users' WHERE `id`=?",$p);
+		case "animal_by_id":
+			return makeQuery($c,"SELECT & FROM 'track_animals' WHERE `id`=?",$p);
+		case "location_by_id":
+			return makeQuery($c,"SELECT & FROM 'track_locations' WHERE `id`=?",$p);
+
+
+		case "animals_by_user_id":
+			return makeQuery($c,"SELECT * FROM `track_animals` WHERE `user_id`=?",$p);
+		case "locations_by_animal_id":
+			return makeQuery($c,"SELECT * FROM `track_locations` WHERE `animal_id`=?",$p);
+
+
+		case "check_signin":
+			return makeQuery($c,"SELECT * FROM `track_users` WHERE `username`=? AND `password`=md5(?)",$p);
+
+
 		default: return ["error"=>"No Matched Type"];
 	}
 }
 
 
-$type = isset($_GET['type']) ? $_GET['type'] : '';
+$data = json_decode(file_get_contents("php://input"));
 
 
 echo json_encode(
-	makeStatement(
-		(object)["type"=>$type,"params"=>[]]
-	),
+	makeStatement($data),
 	JSON_NUMERIC_CHECK
 );
