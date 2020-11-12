@@ -1,9 +1,9 @@
 
 const makeWarning = (target,message) => {
 	$(target).addClass("active")
-    	.find('.message').html(message);
+		.find('.message').html(message);
 	setTimeout(()=>{
-    	$(target).removeClass("active");
+		$(target).removeClass("active");
 	},2000);
 }
 
@@ -13,8 +13,8 @@ const checkSigninForm = async() => {
 	let pass = $("#signin-password").val();
 
 	if(user=='' || pass=='') {
-    	makeWarning("#signin-warning","Please fill in Username and Password");
-    	return;
+		makeWarning("#signin-warning","Please fill in Username and Password");
+		return;
 	}
 
 	console.log(user,pass)

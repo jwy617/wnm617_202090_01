@@ -1,5 +1,9 @@
 
+
+// A way of connecting Front-end and Back-end
+
 const query = (options) => {
+	// Fetch is a Promise
 	return fetch('data/api.php',{
 		method:'POST',
 		body:JSON.stringify(options),
@@ -8,10 +12,14 @@ const query = (options) => {
 }
 
 
+
 // Curried function
+// funtion that makes function
+
 const templater = f => a =>
 	(Array.isArray(a)?a:[a])
 	.reduce((r,o,i,a)=>r+f(o,i,a),'');
+
 
 // function templater(f) {
 //    return function(a) {
@@ -21,3 +29,13 @@ const templater = f => a =>
 //          },'');
 //    }
 // }
+
+
+const checkData = (exterior_check) => new Promise((resolve,reject)=>{
+	let timeout = 0;
+	const interior_check = () => {
+		timeout++; if(timeout>10) return reject();
+		return exterior_check() ? resolve() : setTimeout(interior_check,10)
+	}
+	interior_check();
+})

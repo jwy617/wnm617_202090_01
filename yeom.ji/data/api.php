@@ -65,21 +65,33 @@ function makeStatement($data) {
 		
 
 		case "user_by_id":
-			return makeQuery($c,"SELECT & FROM 'track_users' WHERE `id`=?",$p);
+			return makeQuery($c, "SELECT * FROM 'track_users' WHERE `id`=?",$p);
 		case "animal_by_id":
-			return makeQuery($c,"SELECT & FROM 'track_animals' WHERE `id`=?",$p);
+			return makeQuery($c, "SELECT * FROM 'track_animals' WHERE `id`=?",$p);
 		case "location_by_id":
-			return makeQuery($c,"SELECT & FROM 'track_locations' WHERE `id`=?",$p);
+			return makeQuery($c, "SELECT * FROM 'track_locations' WHERE `id`=?",$p);
 
 
 		case "animals_by_user_id":
-			return makeQuery($c,"SELECT * FROM `track_animals` WHERE `user_id`=?",$p);
+			return makeQuery($c, "SELECT * FROM `track_animals` WHERE `user_id`=?",$p);
 		case "locations_by_animal_id":
-			return makeQuery($c,"SELECT * FROM `track_locations` WHERE `animal_id`=?",$p);
+			return makeQuery($c, "SELECT * FROM `track_locations` WHERE `animal_id`=?",$p);
 
 
 		case "check_signin":
-			return makeQuery($c,"SELECT * FROM `track_users` WHERE `username`=? AND `password`=md5(?)",$p);
+			return makeQuery($c, "SELECT * FROM `track_users` WHERE `username`=? AND `password`=md5(?)",$p);
+
+		case "recent_locations":
+			return makeQuery($c, "SELECT *
+				FROM `track_animals` a
+				RIGHT JOIN (
+				SELECT * FROM `track_locations`
+				ORDER BY `date_create` DESC
+				) l
+				ON a.id = l.animal_id
+				WHERE a.user_id=?
+				GROUP BY l.animal_id
+				",$p);
 
 
 		default: return ["error"=>"No Matched Type"];
@@ -87,8 +99,9 @@ function makeStatement($data) {
 }
 
 
-$data = json_decode(file_get_contents("php://input"));
+// $type = isset($_GET['type']) ? $GET['type'] : '' ;
 
+$data = json_decode(file_get_contents("php://input"));
 
 echo json_encode(
 	makeStatement($data),

@@ -12,21 +12,25 @@
 
 	<script src="lib/js/jquery-2.2.4.min.js"></script>
 	<script src="js/functions.js"></script>
+	<script src="js/maps.js"></script>
 	<script src="js/pages.js"></script>
 	<script src="js/parts.js"></script>
 	<script src="js/app.js"></script>
 	<script src="js/signin.js"></script>
 
 	<script src="lib/js/jquery.mobile-1.4.5.min.js"></script>
+
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2m4Z2tlTsuStXhAtQXegRo3Tv-n_IVPc" defer></script>
 </head>
 
 
 <body>
+
+<!-- SIGNIN PAGE -->
 	<section data-role="page" id="signin-page">
 		<div data-role="main">
 			<div class="flex-stretch display-flex flex-align-center flex-justify-center">
 				<img src="img/logo_1_ver.png">
-				<!-- <h1>doggie voyage</h1> -->
 			</div>
 			<form id="signin-form" data-ajax="false" style="padding: 0.5 1em">
 				<div class="form-control">
@@ -56,6 +60,7 @@
 	</section>
 
 
+<!-- SIGNUP PAGE -->
 	<section data-role="page" id="signup-page">
 		<div data-role="main">
 		<div class="overscroll">
@@ -80,7 +85,7 @@
 					<input id="signup-reenter-password" type="password" class="form-input" data-role="none" placeholder="Re-enter password">
 				</div>
 				<div class="form-control">
-					<a href="#" class="form-button">Create an Account</a>
+					<a href="#list-page" class="form-button">Create an Account</a>
 				</div>
 				<div class="form-control" style="text-align: center; font-size: 0.8em; padding-top: 1em"> Already have an account? <a href="#signin-page">Sign in here</a>
 				</div>
@@ -91,6 +96,7 @@
 	</section>
 
 
+<!-- FORGOT PAGE -->
 	<section data-role="page" id="forgot-page">
 		<div data-role="main">
 			<!-- <div class="flex-stretch"></div> -->
@@ -117,32 +123,26 @@
 	</section>
 
 
+<!-- RECENT PAGE -->
 	<section data-role="page" id="recent-page">
 		<div data-role="main">
-			<form class="form-control" id="doggie-search" data-ajax="false" style="padding: 0 1em;">
-<!-- 				<div class="flex-none">
-					<span class="material-icons">search</span>
-				</div> -->
+			<div class="map"></div>
+<!-- 			<form class="form-control" id="doggie-search" data-ajax="false" style="padding: 0 1em;">
 				<input type="search" class="form-search" data-role="none" placeholder="Search your doggies">
-			</form>
+			</form> -->
+
 			<div class="floater right bottom">
-				<div class="btn-circle" data-toggle="#recent-drawer">
+				<div class="btn-circle">
 					<a href="#" data-activate="#map-add-animal">
 					<span style="color: var(--color-main-medium)">&plus;</span>
 					</a>
 				</div>
 			</div>
+
 			<div class="floater right bottom-second">
 				<div class="btn-circle"><span class="material-icons icon-current-location" style="color: var(--color-main-medium)">my_location</span></div>
 			</div>
-<!-- 			<div class="modal" id="recent-drawer">
-				<div class="modal-drawer left">
-					<div class="modal-head">Add Current Activity</div>
-					<div class="modal-body">
-						Links
-					</div>
-				</div>
-			</div> -->
+
 			<div class="icon-location">
 				<a href="#animal-profile-page"><span class="material-icons icon-locaion">location_on</span></a>
 			</div>
@@ -156,6 +156,7 @@
 				<a href="#animal-profile-page"><span class="material-icons icon-locaion">location_on</span></a>
 			</div>
 		</div>
+
 		<footer data-role="footer">
 			<ul>
 				<li><a href="#recent-page">Map</a></li>
@@ -198,11 +199,13 @@
 	</section>
 
 
+<!-- LIST PAGE -->
 	<section data-role="page" id="list-page">
 		<div data-role="main">
 			<form class="form-control" id="doggie-search-list" data-ajax="false" style="padding: 0 1em">
 				<input type="search" class="form-search" style="background-color: var(--color-neutral-lighter);" data-role="none" placeholder="Search your doggies">
 			</form>
+
 			<div class="overscroll" style="padding-bottom: calc(2 * var(--header-height))">
 				<div class="animallist"></div>
 <!-- 				<div class="animallist display-flex flex-justify-center">
@@ -224,6 +227,7 @@
 					</div> -->
 			</div>
 		</div>
+
 		<footer data-role="footer">
 			<ul>
 				<li><a href="#recent-page">Map</a></li>
@@ -231,6 +235,7 @@
 				<li><a href="#user-profile-page">Profile</a></li>
 			</ul>
 		</footer>
+
 		<div class="modal" id="list-add-animal">
 			<div class="modal-back" data-deactivate="#list-add-animal"></div>
 			<form class="modal-popup" id="list-add-animal-form" data-ajax="false">
@@ -264,6 +269,7 @@
 	</section>
 
 
+<!-- ANIMAL PROFILE PAGE -->
 	<section data-role="page" id="animal-profile-page">
 		<header data-role="header">
 			<h1>Doggie Profile</h1>
@@ -274,39 +280,14 @@
 		</header>
 		<div data-role="main">
 		<div class="overscroll">
-			<form id="animal-profile-form" data-ajax="false" style="padding: 0.5 1em">
-				<div class="dog-profile-image display-flex flex-justify-center">
-					<img src="img/doggie_8.jpg" alt="avatar" >
-				</div>
-				<div class="form-control">
-					<label for="animal-profile-name" class="form-label">Doggie Name</label>
-					<div class="animallist-name">Ollie</div>
-				</div>
-				<div class="form-control">
-					<label for="animal-profile-type" class="form-label">Doggie Type</label>
-					<div class="animallist-name">Golden Retriever</div>
-				</div>
-				<div class="form-control">
-					<label for="animal-profile-size" class="form-label">Doggie Size</label>
-					<div class="animallist-name">Large</div>
-				</div>
-				<div class="form-control">
-					<label for="animal-profile-color" class="form-label">Doggie Color</label>
-					<div class="animallist-name">Brown</div>
-				</div>
-				<div class="form-control">
-					<a href="#animal-profile-edit-page"><button data-role="none" class="form-button">Edit</button></a>
-				</div>
-			</form>
+			<div class="profile-top">
+				<div class="map"></div>
+			</div>
+			<div class="profile-bottom">
+				<div class="profile"></div>
+			</div>
 		</div>
 		</div>
-<!-- 		<footer data-role="footer">
-			<ul>
-				<li><a href="#recent-page">Map</a></li>
-				<li><a href="#list-page">List</a></li>
-				<li><a href="#user-profile-page">Profile</a></li>
-			</ul>
-		</footer> -->
 	</section>
 
 
@@ -352,22 +333,10 @@
 	</section>	
 
 
+<!-- USER PROFILE PAGE -->
 	<section data-role="page" id="user-profile-page">
 		<div data-role="main">
-			<div class="overscroll">
-			<div class="profile-user">
-<!-- 				<div class="user-profile-image display-flex flex-justify-center">
-					<img src="img/avatar_expample_3.jpg" alt="avatar" >
-				</div>
-				<h1>Ellie Miles</h1>
-				<p>Doggie lover</p> -->
-			</div>
-			<ul class="settings-list">
-				<li><a href="#user-profile-edit-page">Edit Profile</a></li>
-				<li><a href="#user-password-edit-page">Change Password</a></li>
-				<li><a href="#" class="js-logout">Logout</a></li>
-			</ul>
-		</div>
+			<div class="profile"></div>
 		</div>
 		<footer data-role="footer">
 			<ul>
@@ -379,6 +348,7 @@
 	</section>
 
 
+<!-- USER PROFILE EDIT PAGE -->
 	<section data-role="page" id="user-profile-edit-page">
 		<header data-role="header">
 			<h1>Edit Profile</h1>
@@ -408,14 +378,13 @@
 					<label for="user-profile-email" class="form-label">Email</label>
 					<input id="user-profile-email" type="text" class="form-input" data-role="none" placeholder="Type your email" value="elliemiles@email.com">
 				</div>
-				<div class="form-control">
+<!-- 				<div class="form-control">
 					<label for="user-profile-password" class="form-label">Password</label>
 					<input id="user-profile-password" type="password" class="form-input" data-role="none" placeholder="" value="*********">
-				</div>
+				</div> -->
 				<div class="form-control">
 					<label for="user-profile-notes" class="form-label">Notes</label>
-					<!-- <input id="user-profile-notes" type="text" class="form-input" data-role="none" placeholder="Notes"> -->
-					<textarea id="user-profile-notes" type="text" class="form-input" data-role="none" rows="3" cols="50">Dogs Keep Us Happy and Healthy:) They are good for my heart and soul. Positive feelings, increased activity, and affection are the building blocks of a happy and healthy life.</textarea>
+					<textarea id="user-profile-notes" type="text" class="form-input" data-role="none" rows="3" cols="50">Dogs keep us happy and healthy:) They are good for my heart and soul. Positive feelings, increased activity, and affection are the building blocks of a happy and healthy life.</textarea>
 				</div>
 				<div class="form-control">
 					<a href="#user-profile-page">
@@ -428,6 +397,7 @@
 	</section>
 
 
+<!-- USER PASSWORD EDIT PAGE -->
 	<section data-role="page" id="user-password-edit-page">
 		<header data-role="header">
 			<h1>Change Password</h1>
@@ -457,19 +427,6 @@
 					</a>
 				</div>
 			</form>
-<!-- 				<div class="form-control">
-					<label for="user-profile-name" class="form-label">Name</label>
-					<input id="user-profile-name" type="text" class="form-input" data-role="none" placeholder="Type your name" value="Ellie Miles">
-				</div>
-				<div class="form-control">
-					<label for="user-profile-password" class="form-label">Password</label>
-					<input id="user-profile-password" type="password" class="form-input" data-role="none" placeholder="" value="*********">
-				</div>
-				<div class="form-control">
-					<a href="#user-profile-page">
-					<button data-role="none" class="form-button">Save</button>
-					</a>
-				</div> -->
 		</div>
 		</div>
 	</section>

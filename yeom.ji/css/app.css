@@ -90,12 +90,7 @@ a {
 .flex-justify-center { justify-content: center; }
 .flex-align-center { align-items: center; }
 
-/*
-.flex-container {
-	display: flex;
-	justify-content: center;
-}
-*/
+
 
 
 
@@ -188,7 +183,6 @@ a {
 	position: relative;
 	overflow: hidden;
 }
-
 .ui-header .ui-title {
 	margin: 0;
 	padding: 0;
@@ -246,12 +240,22 @@ a {
 	justify-content: center;*/
 	flex-direction: column;
 }
-#recent-page [data-role='main'] {
+/*#recent-page [data-role='main'] {
 	background-image: url('../img/map_2.png'); 
 	background-position: center;
 	background-size: cover;
-}
+}*/
 
+
+
+
+.map {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
 
 
 
@@ -352,6 +356,9 @@ a {
    flex: 1 1 100%;
 }
 
+
+
+
 /*WARNING*/
 .modal-toast {
 	position: absolute;
@@ -379,8 +386,9 @@ a {
 	pointer-events: initial;
 }
 
-/*SUCCESS*/
 
+
+/*SUCCESS*/
 
 
 
@@ -408,7 +416,6 @@ a {
 	border-radius: 2em;
 	box-shadow: 2px 2px 5px rgba(0,0,0,0.15);
 }
-
 .btn-back {
 	color: var(--color-main-medium);
 	font-size: 0.8em;
@@ -466,37 +473,6 @@ a {
 
 
 
-/*AVATAR*/
-.profile-user {
-	background-color: var(--color-neutral-light);
-	color: white;
-	text-align: center;
-	padding: 3em 0 1em;
-}
-.profile-avatar {
-/*	margin-top: 3em;
-	margin-bottom: 3em;*/
-	width: 30%;
-}
-
-
-/* Profile */
-.dog-profile-image img {
-	margin: 0;
-	padding: 0;
-	object-fit: cover;
-}
-.user-profile-image img {
-	width: calc(50vmin - 2em);
-	height: calc(50vmin - 2em);
-	margin: 1.5em;
-	border-radius: 50%;
-	object-fit: cover;
-}
-
-
-
-
 /* SETTINGS */
 .settings-list {
 	list-style-type: none;
@@ -526,24 +502,55 @@ a {
 
 
 
-/* ANIMAL LIST */
-/*.animallist {
-	display: flex;
-	flex-direction: column;
-}*/
-.animallist-icon img {
-	width: 150px;
-	height: 100px;
-	vertical-align: text-bottom;
+/*AVATAR*/
+.profile-user {
+	background-color: var(--color-neutral-light);
+	color: white;
+	text-align: center;
+	padding: 3em 0 1em;
+}
+.profile-avatar {
+/*	margin-top: 3em;
+	margin-bottom: 3em;*/
+	width: 30%;
+}
+
+
+
+
+/* Profile */
+.dog-profile-image img {
+	margin: 0;
+	padding: 0;
 	object-fit: cover;
 }
+.user-profile-image img {
+	width: calc(50vmin - 2em);
+	height: calc(50vmin - 2em);
+	margin: 1.5em;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+
+
+
+
+/* ANIMAL LIST */
 .animallist-item {
 	display: flex;
+	flex-direction: column;
 	margin: 1em;
 	background-color: var(--color-white);
 	box-shadow: 2px 2px 10px rgba(0,0,0,0.15);
 	border-radius: 0.3em;
 	overflow: hidden;
+}
+.animallist-icon img {
+	width: 100px;
+	height: 100px;
+	vertical-align: text-bottom;
+	object-fit: cover;
 }
 .animallist-description {
 	padding: 0.5em;
@@ -551,9 +558,26 @@ a {
 	widows: 100%;
 }
 .animallist-name {
-	font-size: 1.2em;
+	font-size: 1.1em;
 	font-weight: bold;
 	font-family: 'Chivo', sans-serif;
+	padding-bottom: 0.5em;
 }
 
 
+
+#animal-profile-page [data-role='main'] {
+	display: flex;
+	flex-direction: column;
+}
+.profile-top {
+	height: 300px;
+	flex: none;
+	overflow:auto;
+	position:relative;
+}
+.profile-bottom {
+	flex: 1;
+	position: relative;
+	overflow:auto;
+}
