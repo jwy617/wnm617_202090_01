@@ -65,11 +65,11 @@ function makeStatement($data) {
 		
 
 		case "user_by_id":
-			return makeQuery($c, "SELECT * FROM 'track_users' WHERE `id`=?",$p);
+			return makeQuery($c, "SELECT id,name,username,email,date_create,img FROM `track_users` WHERE `id`=?",$p);
 		case "animal_by_id":
-			return makeQuery($c, "SELECT * FROM 'track_animals' WHERE `id`=?",$p);
+			return makeQuery($c, "SELECT * FROM `track_animals` WHERE `id`=?",$p);
 		case "location_by_id":
-			return makeQuery($c, "SELECT * FROM 'track_locations' WHERE `id`=?",$p);
+			return makeQuery($c, "SELECT * FROM `track_locations` WHERE `id`=?",$p);
 
 
 		case "animals_by_user_id":

@@ -142,19 +142,6 @@
 			<div class="floater right bottom-second">
 				<div class="btn-circle"><span class="material-icons icon-current-location" style="color: var(--color-main-medium)">my_location</span></div>
 			</div>
-
-			<div class="icon-location">
-				<a href="#animal-profile-page"><span class="material-icons icon-locaion">location_on</span></a>
-			</div>
-			<div class="icon-location-2">
-				<a href="#animal-profile-page"><span class="material-icons icon-locaion">location_on</span></a>
-			</div>
-			<div class="icon-location-3">
-				<a href="#animal-profile-page"><span class="material-icons icon-locaion">location_on</span></a>
-			</div>
-			<div class="icon-location-4">
-				<a href="#animal-profile-page"><span class="material-icons icon-locaion">location_on</span></a>
-			</div>
 		</div>
 
 		<footer data-role="footer">
@@ -207,13 +194,13 @@
 			</form>
 
 			<div class="overscroll" style="padding-bottom: calc(2 * var(--header-height))">
-				<div class="animallist"></div>
-<!-- 				<div class="animallist display-flex flex-justify-center">
+
+				<!-- <div class="animallist display-flex flex-justify-center"> -->
 					<div class="animallist-item">
 						<div class="animallist-name" style="width: 150px; height: 150px; align-items: center; justify-content: center; display: flex; color: var(--color-main-medium)">
 							<a href="#" data-activate="#list-add-animal">+ Add New</a>
 						</div>
-					</div> -->
+					</div>
 <!--  					<div class="animallist-item">
 						<a href="#animal-profile-page">
 						<div class="animallist-icon">
@@ -225,8 +212,9 @@
 						</div>
 						</a>
 					</div> -->
+				<div class="animallist"></div>
+				</div>
 			</div>
-		</div>
 
 		<footer data-role="footer">
 			<ul>
@@ -286,11 +274,15 @@
 			<div class="profile-bottom">
 				<div class="profile"></div>
 			</div>
+			<div class="form-control">
+				<a href="#animal-profile-edit-page"><button data-role="none" class="form-button">Edit</button></a>
+			</div>
 		</div>
 		</div>
 	</section>
 
 
+<!-- ANIMAL PROFILE EDIT PAGE -->
 	<section data-role="page" id="animal-profile-edit-page">
 		<header data-role="header">
 			<h1>Edit Profile</h1>
@@ -302,7 +294,7 @@
 		<div data-role="main">
 		<div class="overscroll">
 			<form id="animal-profile-form-edit" data-ajax="false" style="padding: 0.5 1em">
-				<div class="dog-profile-image display-flex flex-justify-center" style="opacity: 50%;">
+				<div class="animal-profile-image display-flex flex-justify-center" style="opacity: 50%;">
 					<img src="img/doggie_8.jpg" alt="avatar">
 				</div>
 				<div class="form-control">
@@ -359,8 +351,8 @@
 		</header>
 		<div data-role="main">
 		<div class="overscroll">
-			<form id="user-profile-form" data-ajax="false" style="padding: 0.5 1em">
-				<div class="user-profile-image display-flex flex-justify-center">
+			<form id="user-edit-form" data-ajax="false" style="padding: 0.5 1em">
+<!-- 				<div class="user-profile-image display-flex flex-justify-center">
 					<img src="img/avatar_expample_2.png" alt="avatar" >
 				</div>
 				<div class="form-control">
@@ -378,10 +370,6 @@
 					<label for="user-profile-email" class="form-label">Email</label>
 					<input id="user-profile-email" type="text" class="form-input" data-role="none" placeholder="Type your email" value="elliemiles@email.com">
 				</div>
-<!-- 				<div class="form-control">
-					<label for="user-profile-password" class="form-label">Password</label>
-					<input id="user-profile-password" type="password" class="form-input" data-role="none" placeholder="" value="*********">
-				</div> -->
 				<div class="form-control">
 					<label for="user-profile-notes" class="form-label">Notes</label>
 					<textarea id="user-profile-notes" type="text" class="form-input" data-role="none" rows="3" cols="50">Dogs keep us happy and healthy:) They are good for my heart and soul. Positive feelings, increased activity, and affection are the building blocks of a happy and healthy life.</textarea>
@@ -390,7 +378,7 @@
 					<a href="#user-profile-page">
 						<button data-role="none" class="form-button">Save</button>
 					</a>
-				</div>
+				</div> -->
 			</form>
 		</div>
 		</div>

@@ -423,6 +423,19 @@ a {
 
 
 
+.modal-close-floater {
+	position: absolute;
+}
+.modal-close-floater.right {
+	right: 1em;
+}
+.modal-close-floater.top {
+	top: -1em;
+	transform: translateY(-100%);
+}
+
+
+
 
 /*GOOGLE ICONS*/
 .material-icons {
@@ -519,10 +532,12 @@ a {
 
 
 /* Profile */
-.dog-profile-image img {
+.animal-profile-image img {
 	margin: 0;
 	padding: 0;
 	object-fit: cover;
+	width: calc(90vmin - 2em);
+	height: calc(90vmin - 2em);
 }
 .user-profile-image img {
 	width: calc(50vmin - 2em);
@@ -580,4 +595,15 @@ a {
 	flex: 1;
 	position: relative;
 	overflow:auto;
+}
+
+
+.animal-popup img {
+	width: 80px;
+}
+.animal-popup h2 {
+	margin: 0;
+}
+.animal-popup-description {
+	padding: 1em;
 }

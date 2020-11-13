@@ -27,6 +27,7 @@ $(()=>{
 			case "list-page": ListPage(); break;
 			case "recent-page": RecentPage(); break;
 			case "user-profile-page": UserProfilePage(); break;
+			case "user-profile-edit-page": UserProfileEditPage(); break;
 			case "animal-profile-page": AnimalProfilePage(); break;
 		}
 	})
