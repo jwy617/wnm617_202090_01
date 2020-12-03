@@ -64,28 +64,5 @@ const checkUserId = () => {
 
 
 
-const checkSignupForm = () => {
-	let username = $("#signup-username").val();
-	let email = $("#signup-email").val();
-	let password = $("#signup-password").val();
-	let passwordconfirm = $("#signup-password-confirm").val();
-
-	if(password!=passwordconfirm) {
-		// here I need to add warning popup to let users know the error
-
-		throw "Passwords don't match"
-		return;
-	} else {
-		query({type:'insert_user', params:[username,email,password]})
-		.then(d=>{
-			if(d.error) {
-				throw d.error;
-			}
-			console.log(d);
-			$.mobile.navigate("#signin-page");
-		})
-	}
-}
-
 
 

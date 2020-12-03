@@ -98,13 +98,14 @@ function makeStatement($data) {
 		// CRUD
 
 		// INSERTS
+
 		case "insert_user":
 
 			// Check for duplicate users
 			$r = makeQuery($c,"SELECT * FROM `track_users` WHERE `username`=? OR `email`=?",[$p[0],$p[1]]);
 			if(count($r['result'])) return ["error"=>"Username or Email already exists"];
 
-			// Create new user
+			// Create a new user
 			$r = makeQuery($c,"INSERT INTO 
 				`track_users`
 				(`username`,`email`,`password`,`img`,`date_create`)
@@ -119,8 +120,9 @@ function makeStatement($data) {
 					`track_animals`
 					(`user_id`,`name`,`breed`,`description`,`img`,`date_create`)
 					VALUES
-					(?, ?, ?, ?, 'http://via.placeholder.com/400?text=USER', NOW())
+					(?, ?, ?, ?, 'http://via.placeholder.com/400?text=ANIMAL', NOW())
 				",$p);
+			return ["id"=>$c->lastInsertId()];
 
 		case "insert_location":
 			$r = makeQuery($c,"INSERT INTO
@@ -142,9 +144,10 @@ function makeStatement($data) {
 			$r = makeQuery($c,"UPDATE
 				`track_users`
 				SET
-				`username` = ?,
 				`name` = ?,
-				`email` = ?
+				`username` = ?,
+				`email` = ?,
+				`notes` =?
 				WHERE `id` = ?
 				",$p,false);
 			return ["result"=>"success"];
@@ -154,8 +157,9 @@ function makeStatement($data) {
 				`track_animals`
 				SET
 				`name` = ?,
-				`type` = ?,
 				`breed` = ?,
+				`size` = ?,
+				`color` = ?,
 				`description` = ?
 				WHERE `id` = ?
 				",$p,false);
@@ -164,9 +168,12 @@ function makeStatement($data) {
 
 		// DELETE
 
+		case "delete_animal":
+			return makeQuery($c,"DELETE FROM `track_animals` WHERE `id`=?",$p,false);
+		case "delete_location":
+			return makeQuery($c,"DELETE FROM `track_locations` WHERE `id`=?",$p,false);
 
 
-			
 
 
 		default: return ["error"=>"No Matched Type"];

@@ -80,15 +80,7 @@ const FormControl = ({namespace,name,displayname,type,placeholder,value}) => {
 
 
 
-const makeUserProfileUpdateForm = o => `
-${FormControl({
-	namespace:'user-edit',
-	name:'photo',
-	displayname:'Photo',
-	type:'img',
-	placeholder:'Update your photo',
-	value:o.img
-})}
+const makeUserEditForm = o => `
 ${FormControl({
 	namespace:'user-edit',
 	name:'name',
@@ -125,7 +117,7 @@ ${FormControl({
 
 
 
-const makeAnimalProfileUpdateForm = o => `
+const makeAnimalEditForm = o => `
 <div class="animal-profile-image display-flex flex-justify-center">
 	<img src="${o.img}">
 </div>
@@ -156,7 +148,7 @@ ${FormControl({
 ${FormControl({
 	namespace:'animal-edit',
 	name:'color',
-	displayname:'color',
+	displayname:'Color',
 	type:'text',
 	placeholder:'Type the color',
 	value:o.color
@@ -164,6 +156,14 @@ ${FormControl({
 <div class="form-control">
    <label for="animal-edit-description" class="form-label">Description</label>
    <textarea id="animal-edit-description" class="form-input" data-role="none" placeholder="Type a description" style="height:6em">${o.description}</textarea>
+</div>
+
+<div class="form-control">
+	<a href="#" class="js-animal-edit form-button">Save</a>
+</div>
+
+<div class="form-control">
+	<a href="#" class="js-animal-delete form-delete" data-id="${o.id}">Delete</a>
 </div>
 `;
 
