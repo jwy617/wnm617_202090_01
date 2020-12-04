@@ -142,17 +142,6 @@ a {
 	text-decoration: none;
 	cursor: pointer;
 }
-.form-search {
-	width: 100%;
-	display: inline-block;
-	border-width: 0;
-	background-color: var(--color-white);	
-	padding: 0.7em 1em;
-	border-radius: 0.3em;
-	font: inherit;
-	/*font-size: 0.8em;*/
-	outline: 0;
-}
 .form-delete {
 	width: 100%;
 	display: inline-block;
@@ -167,6 +156,46 @@ a {
 	text-align: center;
 	text-decoration: none;
 }
+.hotdog {
+	width: 100%;
+	display: inline-flex;
+	border-width: 0;
+	background-color: var(--color-neutral-lighter);	
+	padding: 0.5em 1em;
+	border-radius: 0.3em;
+	font: inherit;
+	outline: 0;
+	line-height:1;
+}
+[data-role="header"]>.hotdog {
+	padding:0.7em 1em;
+}
+.hotdog>input {
+	flex:1;
+	border-width:0;
+	border-radius:0;
+	background-color:transparent;
+	font:inherit;
+	color:inherit;
+	outline:0;
+	padding:0;
+}
+.form-new {
+	width: 100%;
+	display: inline-block;
+	border-width: 0;
+	background-color: var(--color-white);
+	box-shadow: 2px 2px 10px rgba(0,0,0,0.15);
+	padding: 0.7em 1em;
+	border-radius: 0.3em;
+	font: inherit;
+	color: var(--color-main-medium);
+	font-weight: bold;
+	outline: 0;
+	text-align: center;
+	text-decoration: none;
+}
+
 
 
 
@@ -279,6 +308,14 @@ a {
 	left: 0;
 	width: 100%;
 	height: 100%;
+}
+.icon {
+	width: 1.5em;
+	height: 1.5em;
+	vertical-align: text-bottom;
+}
+.ui-header .icon {
+	vertical-align:middle;
 }
 
 
@@ -556,7 +593,7 @@ a {
 
 
 
-/* Profile */
+/* PROFILE */
 .animal-profile {
 	padding: 1em;
 }
@@ -567,7 +604,11 @@ a {
 	width: calc(50vmin - 2em);
 	height: calc(50vmin - 2em);
 }
-.user-profile-image img {
+
+.user-profile-image {
+	position:relative;
+}
+.user-profile-image>img {
 	width: calc(50vmin - 2em);
 	height: calc(50vmin - 2em);
 	margin: 1.5em;
@@ -595,17 +636,31 @@ a {
 
 
 /* ANIMAL LIST */
+.animallist {
+	/*padding: 10px;*/
+	display: flex;
+	flex-wrap: wrap;
+	/*width: auto;*/
+	justify-content: space-between;
+}
+/*.animallist>div {
+	flex: 0 50%;
+}*/
 .animallist-item {
 	display: flex;
 	flex-direction: column;
-	margin: 1em;
+	position: relative;
+	/*width: calc(50% - 5px);*/
+	height: 180px;
+	margin: 0.5em 1em;
 	background-color: var(--color-white);
 	box-shadow: 2px 2px 10px rgba(0,0,0,0.15);
 	border-radius: 0.3em;
 	overflow: hidden;
+	/*margin-bottom: 10px;*/
 }
 .animallist-icon img {
-	width: 100px;
+	width: 100%;
 	height: 100px;
 	vertical-align: text-bottom;
 	object-fit: cover;
@@ -616,14 +671,15 @@ a {
 	widows: 100%;
 }
 .animallist-name {
-	font-size: 1.1em;
+	font-size: 1.2em;
 	font-weight: bold;
 	font-family: 'Chivo', sans-serif;
 	padding-bottom: 0.5em;
 }
 .column {
 	column-count: 2;
-	/*padding: 10px;*/
+	display: inline-block;
+	/*padding: 10px;
 }
 
 
@@ -652,4 +708,38 @@ a {
 }
 .animal-popup-description {
 	padding: 1em;
+}
+
+
+
+
+
+
+
+
+
+.filter-list {
+	display: flex;
+	overflow: auto;
+}
+.filter {
+	padding: 0 0.5em;
+	font-weight: bold;
+	cursor:pointer;
+}
+
+
+
+
+
+
+.image-uploader input {
+	display:none;
+}
+.image-uploader.full {
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
 }

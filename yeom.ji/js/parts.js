@@ -18,6 +18,9 @@ const makeUserProfile = templater(o=>`
 		<div class="user-profile-image">
 			<img src="${o.img}" alt="">
 		</div>
+		<div class="form-control">
+			<div class="form-button"><a href="#user-upload-page">Edit Image</a></div>
+		</div>
 		<h2 style="margin:0">${o.name}</h2>
 		<div style="margin:1em">@${o.username}</div>
 	</div>
@@ -37,6 +40,15 @@ const makeUserActivityList = (o) => {
 
 
 
+const makeUploaderImage = ({namespace,folder,name}) => {
+	console.log(namespace,folder,name)
+	$(`#${namespace}-image`).val(folder+name);
+	$(`#${namespace}-page .image-uploader`)
+		.css({'background-image':`url(${folder+name}`})
+}
+
+
+
 
 const makeAnimalProfile = templater(o=>`
 	<div class="animal-profile">
@@ -49,6 +61,9 @@ const makeAnimalProfile = templater(o=>`
 		<div><strong>Color</strong> ${o.color}</div>
 		<div><strong>Last Created</strong> ${o.date_create}</div>
 		<div><p>${o.description}</p></div>
+		<div class="form-control">
+			<div class="form-button"><a href="#animal-edit-page">Edit</a></div>
+		</div>
 	</div>
 	`);
 
@@ -105,14 +120,6 @@ ${FormControl({
 	placeholder:'Type your email',
 	value:o.email
 })}
-${FormControl({
-	namespace:'user-edit',
-	name:'notes',
-	displayname:'Notes',
-	type:'text',
-	placeholder:'Anything esle?',
-	value:o.notes
-})}
 `;
 
 
@@ -158,12 +165,36 @@ ${FormControl({
    <textarea id="animal-edit-description" class="form-input" data-role="none" placeholder="Type a description" style="height:6em">${o.description}</textarea>
 </div>
 
-<div class="form-control">
-	<a href="#" class="js-animal-edit form-button">Save</a>
-</div>
-
-<div class="form-control">
-	<a href="#" class="js-animal-delete form-delete" data-id="${o.id}">Delete</a>
-</div>
 `;
+
+// <div class="form-control">
+// 	<a href="#" class="js-animal-delete form-delete" data-id="${o.id}">Delete</a>
+// </div>
+
+
+
+
+
+const drawAnimalList = (a,empty_phrase="No animals yet, you should add some.") => {
+	$("#list-page .animallist").html(
+		a.length ? makeAnimalList(a) : empty_phrase
+	)
+}
+
+
+
+// const capitalize = s => s[0].toUpperCase()+s.substr(1);
+
+// const filterList = (animals,breed) => {
+// 	let a = [...(new Set(animals.map(o=>o[breed])))];
+// 	return templater(o=>`<div class="filter" data-field="${breed}" data-value="${o}">${[capitalize(o)}</div>`)(a);
+// }
+
+// const makeFilterList = (animals) => {
+// 	return `
+// 	<div class="filter" data-field="breed" data-value="all">All</div>
+// 	|
+// 	${filterList(animals,'breed')}
+// 	`
+// }
 

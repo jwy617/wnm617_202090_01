@@ -1,6 +1,13 @@
 <html>
 <head>
 	<meta charset="UTF-8">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="mobile-web-app-capable" content="yes">
+
+	<link rel="apple-touch-icon" href="./site_logo.png">
+	<link rel="icon" href="./site_logo.png">
+
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>doggie voyage</title>
 
@@ -205,21 +212,21 @@
 
 <!-- LIST PAGE -->
 	<section data-role="page" id="list-page">
-		<div data-role="main">
-			<form class="form-control" id="doggie-search-list" data-ajax="false" style="padding: 0 1em">
-				<input type="search" class="form-search" style="background-color: var(--color-neutral-lighter);" data-role="none" placeholder="Search your doggies">
+		<header data-role="header" style="padding: 0 1em; height: auto">
+			<form class="hotdog form-control" id="list-search-form" data-ajax="false" >
+				<input type="search" id="list-search-input" data-role="none" placeholder="Search your doggies">
 			</form>
+		</header>
+		<header data-role="header" style="padding: 0 1em">
+			<div class="filter-list">
+			</div>
+		</header>
 
+		<div data-role="main">
 			<div class="overscroll" style="padding-bottom: calc(2 * var(--header-height))">
-				<div class="animallist-item">
-
-					<div class="form-control" style="text-align: center; color="><a href="#animal-add-page">+ Add New</a>
-					</div>
-<!-- 					<div class="animallist-name" style="width: 150px; height: 150px; align-items: center; justify-content: center; display: flex; color: var(--color-main-medium)">
-					<a href="#animal-add-page">+ Add New</a>
-					</div> -->
+				<div class="form-control">
+					<button type="submit" class="form-new" data-role="none"><a href="#animal-add-page">+ Add New</a></button>
 				</div>
-
 				<div class="column">
 					<div class="animallist"></div>
 				</div>
@@ -287,7 +294,7 @@
 				</div>
 				<div class="form-control">
 					<a href="#" class="js-animal-add"><input type="submit" value="Save" data-role="none" class="form-button"></a>
-					</div>
+				</div>
 			</form>
 			</div>
 		</div>
@@ -372,20 +379,17 @@
 			</ul>	
 		</header>
 		<div data-role="main">
-		<div class="overscroll">
-			<div class="profile-top">
-				<div class="map"></div>
-				<div class="floater right bottom">
-					<a href="#location-add-page" class="btn-circle" style="color: var(--color-main-medium)">&plus;</a>
+			<div class="overscroll">
+				<div class="profile-top">
+					<div class="map"></div>
+					<div class="floater right bottom">
+						<a href="#location-add-page" class="btn-circle" style="color: var(--color-main-medium)">&plus;</a>
+					</div>
+				</div>
+				<div class="profile-bottom">
+					<div class="profile"></div>
 				</div>
 			</div>
-			<div class="profile-bottom">
-				<div class="profile"></div>
-			</div>
-			<div class="form-control">
-				<a href="#animal-edit-page"><button data-role="none" class="form-button">Edit</button></a>
-			</div>
-		</div>
 		</div>
 	</section>
 
@@ -403,12 +407,9 @@
 			<div class="overscroll">
 				<form id="animal-edit-form" data-ajax="false" style="padding:1em">
 				</form>
-<!-- 				<div class="form-control">
+				<div class="form-control">
 					<a href="#" class="js-animal-edit"><input type="submit" value="Save" data-role="none" class="form-button"></a>
-				</div> -->
-<!-- 				<div class="form-control">
-					<a href="#" class="js-animal-delete"><input type="delete" value="Delete" data-role="none" class="form-delete"></a>
-				</div> -->
+				</div>
 			</div>
 		</div>
 	</section>	
@@ -558,6 +559,27 @@
 					</div>
 				</form>
 			</div>
+		</div>
+	</section>
+
+
+<!-- USER UPLOAD PAGE -->
+	<section data-role="page" id="user-upload-page">
+		<header data-role="header">
+		<h1>Upload Photo</h1>
+			<ul>
+				<li><a href="#" data-rel="back">Back</a></li>
+				<li class="flex-stretch"></li>
+				<li><a href="#" class="js-user-upload">Save</a></li>
+			</ul>
+		</header>
+		<div data-role="main">
+			<form id="user-upload-form" data-ajax="false">
+				<input type="hidden" id="user-upload-image">
+				<label class="image-uploader full">
+				<input type="file" data-role="none" id="user-upload-input">
+				</label>
+			</form>
 		</div>
 	</section>
 

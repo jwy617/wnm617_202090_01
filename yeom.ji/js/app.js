@@ -29,6 +29,7 @@ $(()=>{
 
 			case "user-profile-page": UserProfilePage(); break;
 			case "user-edit-page": UserEditPage(); break;
+			case "user-upload-page": UserUploadPage(); break;
 
 			case "animal-profile-page": AnimalProfilePage(); break;
 			case "animal-edit-page": AnimalEditPage(); break;
@@ -50,6 +51,10 @@ $(()=>{
 	.on("submit","#signup-form",function(e){
 		e.preventDefault();
 		checkSignupForm();
+	})
+	.on("submit","#list-search-form",function(e){
+		e.preventDefault();
+		checkSearchForm();
 	})
 
 
@@ -73,6 +78,20 @@ $(()=>{
 
 
 
+	.on("click",".filter",function(){
+		checkListFilter($(this).data());
+	})
+	.on("change",".image-uploader input",function(){
+		checkUpload(this.files[0])
+		.then(d=>{
+			console.log(d)
+			makeUploaderImage({
+				namespace:'user-upload',
+				folder:'uploads/',
+				name:d.result
+			})
+		})
+	})
 
 
 
@@ -82,12 +101,10 @@ $(()=>{
 		sessionStorage.removeItem('userId');
 		checkUserId();
 	})
-
 	.on("click",'.js-animal-jump',function(e){
 		sessionStorage.animalId = $(this).data("id");
 		$.mobile.navigate('#animal-profile-page');
 	})
-
 	.on("click",'.js-animal-delete',function(e){
 	checkAnimalDelete($(this).data("id"));
 	})

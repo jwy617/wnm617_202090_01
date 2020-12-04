@@ -49,6 +49,25 @@ function makeQuery($c,$ps,$p,$makeResults=true) {
 
 
 
+
+function makeUpload($file,$folder) {
+	$filename = microtime(true) . "_" . $_FILES[$file]['name'];
+
+	if(@move_uploaded_file(
+		$_FILES[$file]['tmp_name'],
+		$folder.$filename
+	)) return ['result'=>$filename];
+	else return [
+		"error"=>"File Upload Failed",
+		"_FILES"=>$_FILES,
+		"filename"=>$filename
+	];
+}
+
+
+
+
+
 function makeStatement($data) {
 	$c = makeConn();
 	$t = $data->type;
@@ -81,6 +100,7 @@ function makeStatement($data) {
 		case "check_signin":
 			return makeQuery($c, "SELECT * FROM `track_users` WHERE `username`=? AND `password`=md5(?)",$p);
 
+
 		case "recent_locations":
 			return makeQuery($c, "SELECT *
 				FROM `track_animals` a
@@ -94,9 +114,27 @@ function makeStatement($data) {
 				",$p);
 
 
+		/* ----- SEARCH ------ */
+		case "search_animals":
+			$p = ["%$p[0]%",$p[1]];
+			return makeQuery($c,"SELECT * FROM
+				`track_animals`
+				WHERE
+					`name` LIKE ? AND
+					`user_id` = ?
+				",$p);
 
-		// CRUD
+		case "filter_animals":
+			return makeQuery($c,"SELECT * FROM
+				`track_animals`
+					WHERE
+					`$p[0]` = ? AND
+					`user_id` = ?
+				",[$p[1],$p[2]]);
 
+
+
+		/* ----- CRUD ------ */
 		// INSERTS
 
 		case "insert_user":
@@ -118,9 +156,9 @@ function makeStatement($data) {
 		case "insert_animal":
 			$r = makeQuery($c,"INSERT INTO
 					`track_animals`
-					(`user_id`,`name`,`breed`,`description`,`img`,`date_create`)
+					(`user_id`,`name`,`breed`,`size`,`color`,`description`,`img`,`date_create`)
 					VALUES
-					(?, ?, ?, ?, 'http://via.placeholder.com/400?text=ANIMAL', NOW())
+					(?, ?, ?, ?, ?, ?, 'http://via.placeholder.com/400?text=ANIMAL', NOW())
 				",$p);
 			return ["id"=>$c->lastInsertId()];
 
@@ -146,8 +184,7 @@ function makeStatement($data) {
 				SET
 				`name` = ?,
 				`username` = ?,
-				`email` = ?,
-				`notes` =?
+				`email` = ?
 				WHERE `id` = ?
 				",$p,false);
 			return ["result"=>"success"];
