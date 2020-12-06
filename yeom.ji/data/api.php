@@ -189,6 +189,15 @@ function makeStatement($data) {
 				",$p,false);
 			return ["result"=>"success"];
 
+		case "update_user_image":
+			$r = makeQuery($c,"UPDATE
+				`track_users`
+				SET
+				`img` = ?
+				WHERE `id` = ?
+				",$p,false);
+			return ["result"=>"success"];
+
 		case "update_animal":
 			$r = makeQuery($c,"UPDATE
 				`track_animals`
@@ -201,6 +210,9 @@ function makeStatement($data) {
 				WHERE `id` = ?
 				",$p,false);
 			return ["result"=>"success"];
+
+
+
 
 
 		// DELETE
@@ -216,6 +228,21 @@ function makeStatement($data) {
 		default: return ["error"=>"No Matched Type"];
 	}
 }
+
+
+
+
+
+
+
+if(!empty($_FILES)) {
+	$r = makeUpload("image","../uploads/");
+	die(json_encode($r));
+}
+
+
+
+
 
 
 // $type = isset($_GET['type']) ? $GET['type'] : '' ;

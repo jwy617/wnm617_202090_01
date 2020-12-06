@@ -8,6 +8,8 @@ const ListPage = async() => {
 
 	console.log(d);
 
+	$("#list-page .filter-list").html(makeFilterList(d.result));
+
 	drawAnimalList(d.result);
 }
 

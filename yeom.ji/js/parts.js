@@ -17,9 +17,7 @@ const makeUserProfile = templater(o=>`
 	<div class="profile-containter">
 		<div class="user-profile-image">
 			<img src="${o.img}" alt="">
-		</div>
-		<div class="form-control">
-			<div class="form-button"><a href="#user-upload-page">Edit Image</a></div>
+			<a href="#user-upload-page" class="floater bottom right"><img class="icon" src="img/icon/edit_blue.png" alt=""></a>
 		</div>
 		<h2 style="margin:0">${o.name}</h2>
 		<div style="margin:1em">@${o.username}</div>
@@ -175,7 +173,7 @@ ${FormControl({
 
 
 
-const drawAnimalList = (a,empty_phrase="No animals yet, you should add some.") => {
+const drawAnimalList = (a, empty_phrase=`<div class="animallist-name">No animals yet. Start adding one!</div>`) => {
 	$("#list-page .animallist").html(
 		a.length ? makeAnimalList(a) : empty_phrase
 	)
@@ -183,18 +181,18 @@ const drawAnimalList = (a,empty_phrase="No animals yet, you should add some.") =
 
 
 
-// const capitalize = s => s[0].toUpperCase()+s.substr(1);
+const capitalize = s => s[0].toUpperCase()+s.substr(1);
 
-// const filterList = (animals,breed) => {
-// 	let a = [...(new Set(animals.map(o=>o[breed])))];
-// 	return templater(o=>`<div class="filter" data-field="${breed}" data-value="${o}">${[capitalize(o)}</div>`)(a);
-// }
+const filterList = (animals,breed) => {
+	let a = [...(new Set(animals.map(o=>o[breed])))];
+	return templater(o=>`<div class="filter" data-field="${breed}" data-value="${o}">${capitalize(o)}</div>`)(a);
+}
 
-// const makeFilterList = (animals) => {
-// 	return `
-// 	<div class="filter" data-field="breed" data-value="all">All</div>
-// 	|
-// 	${filterList(animals,'breed')}
-// 	`
-// }
+const makeFilterList = (animals) => {
+	return `
+	<div class="filter" data-field="breed" data-value="">All</div>
+	|
+	${filterList(animals,'breed')}
+	`
+}
 

@@ -42,7 +42,6 @@ const checkUserEditForm = () => {
 
 
 
-
 const checkUpload = file => {
 	let fd = new FormData();
 	fd.append("image",file);
@@ -52,6 +51,22 @@ const checkUpload = file => {
 		body:fd
 	}).then(d=>d.json());
 }
+
+const checkUserUploadForm = () => {
+	let upload = $("#user-upload-image").val()
+	if(upload=="") return;
+
+	query({
+		type:'update_user_image',
+		params:[upload,sessionStorage.userId]
+	}).then(d=>{
+		if(d.error) {
+			throw d.error;
+		}
+		window.history.back();
+	})
+}
+
 
 
 
@@ -78,7 +93,6 @@ const checkAnimalAddForm = () => {
 	})	
 }
 
-
 const checkAnimalEditForm = () => {
 	let name = $("#animal-edit-name").val();
 	let breed = $("#animal-edit-breed").val();
@@ -96,7 +110,6 @@ const checkAnimalEditForm = () => {
 		window.history.back();
 	})	
 }
-
 
 const checkAnimalDelete = id => {
 	query({
@@ -147,11 +160,10 @@ const checkSearchForm = async() => {
 		params:[s,sessionStorage.userId]
 	})
 
-	drawAnimalList(r.result,"Search produced no results.");
+	drawAnimalList(r.result,`<div class="search-error">Sorry, no results found :(</div>`);
 
 	console.log(r)
 }
-
 
 const checkListFilter = async ({field,value}) => {
 	let r = value=="" ?
@@ -164,5 +176,5 @@ const checkListFilter = async ({field,value}) => {
 			params:[field,value,sessionStorage.userId]
 		});
 
-	drawAnimalList(r.result,"Search produced no results.");
+	drawAnimalList(r.result,`<div class="search-error">Sorry, no results found :(</div>`);
 }

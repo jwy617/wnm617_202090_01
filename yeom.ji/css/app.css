@@ -156,6 +156,10 @@ a {
 	text-align: center;
 	text-decoration: none;
 }
+.form-delete:hover{
+	text-decoration: none;
+	cursor: pointer;
+}
 .hotdog {
 	width: 100%;
 	display: inline-flex;
@@ -168,22 +172,23 @@ a {
 	line-height:1;
 }
 [data-role="header"]>.hotdog {
-	padding:0.7em 1em;
+	padding: 0.7em 1em;
 }
 .hotdog>input {
-	flex:1;
-	border-width:0;
-	border-radius:0;
-	background-color:transparent;
-	font:inherit;
-	color:inherit;
-	outline:0;
-	padding:0;
+	flex: 1;
+	border-width: 0;
+	border-radius: 0;
+	background-color: transparent;
+	font: inherit;
+	color: inherit;
+	outline: 0;
+	padding: 0;
 }
 .form-new {
 	width: 100%;
 	display: inline-block;
 	border-width: 0;
+	/*margin: 0.5em 1em;*/
 	background-color: var(--color-white);
 	box-shadow: 2px 2px 10px rgba(0,0,0,0.15);
 	padding: 0.7em 1em;
@@ -194,6 +199,10 @@ a {
 	outline: 0;
 	text-align: center;
 	text-decoration: none;
+}
+.form-new:hover{
+	text-decoration: none;
+	cursor: pointer;
 }
 
 
@@ -230,8 +239,8 @@ a {
 	height: 3.5em;
 	line-height: 3.5em;
 	border-width: 0;
-	background-color: var(--color-main-medium);
-	color: var(--color-white);
+	background-color: var(--color-neutral-light);
+	color: var(--color-main-medium);
 	box-shadow: 0 0 5px rgba(0,0,0,0.15);
 	position: relative;
 	overflow: hidden;
@@ -309,13 +318,18 @@ a {
 	width: 100%;
 	height: 100%;
 }
+.logo {
+	width: 1em;
+	height: 1em;
+	vertical-align: text-bottom;
+}
 .icon {
 	width: 1.5em;
 	height: 1.5em;
 	vertical-align: text-bottom;
 }
 .ui-header .icon {
-	vertical-align:middle;
+	vertical-align: middle;
 }
 
 
@@ -606,12 +620,12 @@ a {
 }
 
 .user-profile-image {
-	position:relative;
+	position: relative;
 }
 .user-profile-image>img {
-	width: calc(50vmin - 2em);
-	height: calc(50vmin - 2em);
-	margin: 1.5em;
+	width: calc(100vmin - 4em);
+	height: calc(100vmin - 4em);
+	margin: 2em;
 	border-radius: 50%;
 	object-fit: cover;
 }
@@ -628,6 +642,17 @@ a {
 .profile-activity-date {
 	font-size: 0.8em;
 	color: var(--color-neutral-medium);
+}
+.profile-activity-containter {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	margin: 0.5em 1em;
+	background-color: var(--color-white);
+	box-shadow: 2px 2px 10px rgba(0,0,0,0.15);
+	border-radius: 0.3em;
+	overflow: hidden;
+	/*margin-bottom: 10px;*/
 }
 
 
@@ -650,14 +675,14 @@ a {
 	display: flex;
 	flex-direction: column;
 	position: relative;
-	/*width: calc(50% - 5px);*/
+	width: calc(50% - 5px);
 	height: 180px;
-	margin: 0.5em 1em;
+	/*margin: 0.5em 0.5em;*/
 	background-color: var(--color-white);
 	box-shadow: 2px 2px 10px rgba(0,0,0,0.15);
 	border-radius: 0.3em;
 	overflow: hidden;
-	/*margin-bottom: 10px;*/
+	margin-bottom: 1em;
 }
 .animallist-icon img {
 	width: 100%;
@@ -676,11 +701,11 @@ a {
 	font-family: 'Chivo', sans-serif;
 	padding-bottom: 0.5em;
 }
-.column {
+/*.column {
 	column-count: 2;
 	display: inline-block;
-	/*padding: 10px;
-}
+	padding: 10px;
+}*/
 
 
 #animal-profile-page [data-role='main'] {
@@ -712,6 +737,15 @@ a {
 
 
 
+.search-error {
+	font-size: 1.2em;
+	font-weight: bold;
+	font-family: 'Chivo', sans-serif;
+	padding: 2em 0;
+	color: var(--color-error);
+	text-align: center;
+}
+
 
 
 
@@ -734,12 +768,15 @@ a {
 
 
 .image-uploader input {
-	display:none;
+	display: none;
 }
 .image-uploader.full {
-	position:absolute;
-	top:0;
-	left:0;
-	width:100%;
-	height:100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-position:center;
+	background-size:contain;
+	background-repeat:no-repeat;
 }

@@ -5,8 +5,8 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="mobile-web-app-capable" content="yes">
 
-	<link rel="apple-touch-icon" href="./site_logo.png">
-	<link rel="icon" href="./site_logo.png">
+	<link rel="apple-touch-icon" href="./site_logo_2.png">
+	<link rel="logo" href="./site_logo_2.png">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>doggie voyage</title>
@@ -37,9 +37,18 @@
 <!-- SIGNIN PAGE -->
 	<section data-role="page" id="signin-page">
 		<div data-role="main">
-			<div class="flex-stretch display-flex flex-align-center flex-justify-center">
-				<img src="img/logo_1_ver.png">
+
+			<div class="flex-stretch"></div>
+
+			<div class="display-flex flex-align-center flex-justify-center">
+				<img src="./site_logo_2.png" style="width:45vw;height:45vw;" classs="icon" alt="">
 			</div>
+			<div class="display-flex flex-align-center flex-justify-center">
+				<img src="img/logo_2_hor.png" style="width:90vw">
+			</div>
+
+			<div class="flex-stretch"></div>
+
 			<form id="signin-form" data-ajax="false" style="padding: 0.5 1em">
 				<div class="form-control">
 					<label for="signin-username" class="form-label">Username</label>
@@ -57,7 +66,7 @@
 				<div class="form-control" style="text-align: center; font-size: 0.8em; padding-top: 1em"> Don't have an account? <a href="#signup-page">Sign up here</a>
 				</div>
 			</form>
-			<div class="flex-stretch"></div>
+			
 		</div>
 
 		<div class="modal" id="signin-warning">
@@ -219,17 +228,18 @@
 		</header>
 		<header data-role="header" style="padding: 0 1em">
 			<div class="filter-list">
+				<!-- <div class="filter" data-field="breed" data-value="">All</div> -->
 			</div>
 		</header>
 
 		<div data-role="main">
-			<div class="overscroll" style="padding-bottom: calc(2 * var(--header-height))">
+			<div class="overscroll" style="padding-bottom: calc(2 * var(--header-height)); padding: 0.5 1em;">
 				<div class="form-control">
-					<button type="submit" class="form-new" data-role="none"><a href="#animal-add-page">+ Add New</a></button>
+					<a href="#animal-add-page"><input type="submit" value="+ Add New" data-role="none" class="form-new"></a>
 				</div>
-				<div class="column">
+				<!-- <div class="column"> -->
 					<div class="animallist"></div>
-				</div>
+				<!-- </div> -->
 			</div>
 		</div>
 
@@ -444,31 +454,31 @@
 			</div>
 
 			<h4 style="margin: 1em">My Activity</h4>
-				<div class="animallist-item" data-role="none">
+				<div class="profile-activity-containter" data-role="none">
 					<div class="profile-activity">
 						<p class="profile-activity-date">Nov 17, 2020 17:28</p>
 						<p class="">Added <strong>Immunics</strong>'s new activity.</p>
 					</div>
 				</div>
-				<div class="animallist-item" data-role="none">
+				<div class="profile-activity-containter" data-role="none">
 					<div class="profile-activity">
 						<p class="profile-activity-date">Nov 15, 2020 12:30</p>
 						<p class="">Added <strong>Newcube</strong>'s new activity.</p>
 					</div>
 				</div>
-				<div class="animallist-item" data-role="none">
+				<div class="profile-activity-containter" data-role="none">
 					<div class="profile-activity">
 						<p class="profile-activity-date">Oct 29, 2020 10:05</p>
 						<p class="">Added a new dog, <strong>Immunics</strong></p>
 					</div>
 				</div>
-				<div class="animallist-item" data-role="none">
+				<div class="profile-activity-containter" data-role="none">
 					<div class="profile-activity">
 						<p class="profile-activity-date">Oct 21, 2020 18:11</p>
 						<p class="">Added <strong>Brainquil</strong>'s new activity.</p>
 					</div>
 				</div>
-				<div class="animallist-item" data-role="none">
+				<div class="profile-activity-containter" data-role="none">
 					<div class="profile-activity">
 						<p class="profile-activity-date">Oct 11, 2020 09:59</p>
 						<p class="">Added <strong>Brainquil</strong>'s new activity.</p>
@@ -483,6 +493,30 @@
 				<li><a href="#user-profile-page">Profile</a></li>
 			</ul>
 		</footer>
+	</section>
+
+
+<!-- USER UPLOAD PAGE -->
+	<section data-role="page" id="user-upload-page">
+		<header data-role="header">
+		<h1>Upload Photo</h1>
+			<ul>
+				<li><a href="#" data-rel="back">Back</a></li>
+				<li class="flex-stretch"></li>
+				<li><a href="#" class="js-user-upload">Save</a></li>
+			</ul>
+		</header>
+		<div data-role="main">
+			<form id="user-upload-form" data-ajax="false">
+				<input type="hidden" id="user-upload-image">
+				<label class="image-uploader full">
+					<input type="file" data-role="none" id="user-upload-input">
+				</label>
+			</form>
+			<div class="form-control" style="padding: 0.7em 1em">
+				<label for="user-upload-input" class="form-button">Choose Image</label>
+			</div>
+		</div>
 	</section>
 
 
@@ -520,7 +554,7 @@
 <!-- 				<div class="form-control">
 					<a href="#" class="js-user-edit"><input type="submit" value="Save" data-role="none" class="form-button"></a>
 				</div> -->
-				<div class="form-control">
+				<div class="form-control" style="padding: 0.5 1em">
 					<button type="submit" class="form-button js-user-edit" data-role="none">Save</button>
 				</div>
 			</div>
@@ -563,25 +597,6 @@
 	</section>
 
 
-<!-- USER UPLOAD PAGE -->
-	<section data-role="page" id="user-upload-page">
-		<header data-role="header">
-		<h1>Upload Photo</h1>
-			<ul>
-				<li><a href="#" data-rel="back">Back</a></li>
-				<li class="flex-stretch"></li>
-				<li><a href="#" class="js-user-upload">Save</a></li>
-			</ul>
-		</header>
-		<div data-role="main">
-			<form id="user-upload-form" data-ajax="false">
-				<input type="hidden" id="user-upload-image">
-				<label class="image-uploader full">
-				<input type="file" data-role="none" id="user-upload-input">
-				</label>
-			</form>
-		</div>
-	</section>
 
 </body>
 </html>
