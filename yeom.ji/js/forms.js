@@ -28,6 +28,8 @@ const checkUserEditForm = () => {
 	let name = $("#user-edit-name").val();
 	let username = $("#user-edit-username").val();
 	let email = $("#user-edit-email").val();
+	let favorite_animal = $("#user-edit-favorite_animal").val();
+	let about_me = $("#user-edit-about_me").val();
 
 	query({
 		type:'update_user', 
@@ -70,30 +72,30 @@ const checkUserUploadForm = () => {
 
 
 
-const checkAnimalUpload = file => {
-	let fd = new FormData();
-	fd.append("image",file);
+// const checkAnimalUpload = file => {
+// 	let fd = new FormData();
+// 	fd.append("image",file);
 
-	return fetch('data/api.php',{
-		method:'POST',
-		body:fd
-	}).then(d=>d.json());
-}
+// 	return fetch('data/api.php',{
+// 		method:'POST',
+// 		body:fd
+// 	}).then(d=>d.json());
+// }
 
-const checkAnimalUploadForm = () => {
-	let upload = $("#animal-upload-image").val()
-	if(upload=="") return;
+// const checkAnimalUploadForm = () => {
+// 	let upload = $("#animal-upload-image").val()
+// 	if(upload=="") return;
 
-	query({
-		type:'update_animal_image',
-		params:[upload,sessionStorage.animalId]
-	}).then(d=>{
-		if(d.error) {
-			throw d.error;
-		}
-		window.history.go(-2);
-	})
-}
+// 	query({
+// 		type:'update_animal_image',
+// 		params:[upload,sessionStorage.animalId]
+// 	}).then(d=>{
+// 		if(d.error) {
+// 			throw d.error;
+// 		}
+// 		window.history.go(-2);
+// 	})
+// }
 
 
 
@@ -123,6 +125,7 @@ const checkAnimalAddForm = () => {
 
 const checkAnimalEditForm = () => {
 	let name = $("#animal-edit-name").val();
+	let gender = $("#animal-edit-gender").val();
 	let breed = $("#animal-edit-breed").val();
 	let size = $("#animal-edit-size").val();
 	let color = $("#animal-edit-color").val();
@@ -130,7 +133,7 @@ const checkAnimalEditForm = () => {
 
 	query({
 		type:'update_animal',
-		params:[name,breed,size,color,description,sessionStorage.animalId]
+		params:[name,gender,breed,size,color,description,sessionStorage.animalId]
 	}).then(d=>{
 		if(d.error) {
 			throw d.error;

@@ -33,7 +33,7 @@ $(()=>{
 
 			case "animal-profile-page": AnimalProfilePage(); break;
 			case "animal-edit-page": AnimalEditPage(); break;
-			case "animal-upload-page": AnimalUploadPage(); break;
+			// case "animal-upload-page": AnimalUploadPage(); break;
 
 			case "location-add-page": LocationAddPage(); break;
 		}
@@ -79,9 +79,9 @@ $(()=>{
 	.on("click",'.js-user-upload',function(e){
 		checkUserUploadForm();
 	})
-	.on("click",'.js-animal-upload',function(e){
-		checkAnimalUploadForm();
-	})
+	// .on("click",'.js-animal-upload',function(e){
+	// 	checkAnimalUploadForm();
+	// })
 
 
 
@@ -96,25 +96,21 @@ $(()=>{
 		checkUpload(this.files[0])
 		.then(d=>{
 			console.log(d)
-			makeUploaderImage({
-				namespace:'user-upload',
-				folder:'uploads/',
-				name:d.result
-			})
+			makeUploaderImage(this,d.result,'uploads/')
 		})
 	})
 
-	.on("change",".animal-image-uploader input",function(){
-		checkAnimalUpload(this.files[0])
-		.then(d=>{
-			console.log(d)
-			makeAnimalUploaderImage({
-				namespace:'animal-upload',
-				folder:'uploads_animals/',
-				name:d.result
-			})
-		})
-	})
+	// .on("change",".animal-image-uploader input",function(){
+	// 	checkAnimalUpload(this.files[0])
+	// 	.then(d=>{
+	// 		console.log(d)
+	// 		makeAnimalUploaderImage({
+	// 			namespace:'animal-upload',
+	// 			folder:'uploads_animals/',
+	// 			name:d.result
+	// 		})
+	// 	})
+	// })
 
 
 

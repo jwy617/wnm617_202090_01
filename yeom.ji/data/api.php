@@ -98,7 +98,7 @@ function makeStatement($data) {
 		
 
 		case "user_by_id":
-			return makeQuery($c, "SELECT id,name,username,email,date_create,img FROM `track_users` WHERE `id`=?",$p);
+			return makeQuery($c, "SELECT id,name,username,email,favorite_animal,about_me,date_create,img FROM `track_users` WHERE `id`=?",$p);
 		case "animal_by_id":
 			return makeQuery($c, "SELECT * FROM `track_animals` WHERE `id`=?",$p);
 		case "location_by_id":
@@ -161,9 +161,9 @@ function makeStatement($data) {
 			// Create a new user
 			$r = makeQuery($c,"INSERT INTO 
 				`track_users`
-				(`username`,`email`,`password`,`img`,`date_create`)
+				(`name`,`username`,`email`,`password`,`favorite_animal`,`about_me`,`img`,`date_create`)
 				VALUES 
-				(?, ?, md5(?), 'https://via.placeholder.com/400?text=USER', NOW())
+				('', ?, ?, md5(?), ?, ?, 'https://via.placeholder.com/400?text=USER', NOW())
 	            ",$p);
 			return ["id"=>$c->lastInsertId()];
 
@@ -171,9 +171,9 @@ function makeStatement($data) {
 		case "insert_animal":
 			$r = makeQuery($c,"INSERT INTO
 					`track_animals`
-					(`user_id`,`name`,`breed`,`size`,`color`,`description`,`img`,`date_create`)
+					(`user_id`,`name`,`gender`,`breed`,`size`,`color`,`description`,`img`,`date_create`)
 					VALUES
-					(?, ?, ?, ?, ?, ?, 'http://via.placeholder.com/400?text=ANIMAL', NOW())
+					(?, ?, ?, ?, ?, ?, ?, 'http://via.placeholder.com/400?text=ANIMAL', NOW())
 				",$p);
 			return ["id"=>$c->lastInsertId()];
 
@@ -199,7 +199,9 @@ function makeStatement($data) {
 				SET
 				`name` = ?,
 				`username` = ?,
-				`email` = ?
+				`email` = ?,
+				`favorite_animal` = ?,
+				`about_me` = ?
 				WHERE `id` = ?
 				",$p,false);
 			return ["result"=>"success"];
@@ -218,6 +220,7 @@ function makeStatement($data) {
 				`track_animals`
 				SET
 				`name` = ?,
+				`gender` = ?,
 				`breed` = ?,
 				`size` = ?,
 				`color` = ?,
@@ -226,14 +229,14 @@ function makeStatement($data) {
 				",$p,false);
 			return ["result"=>"success"];
 
-		case "update_animal_image":
-			$r = makeQuery($c,"UPDATE
-				`track_animals`
-				SET
-				`img` = ?
-				WHERE `id` = ?
-				",$p,false);
-			return ["result"=>"success"];
+		// case "update_animal_image":
+		// 	$r = makeQuery($c,"UPDATE
+		// 		`track_animals`
+		// 		SET
+		// 		`img` = ?
+		// 		WHERE `id` = ?
+		// 		",$p,false);
+		// 	return ["result"=>"success"];
 
 
 

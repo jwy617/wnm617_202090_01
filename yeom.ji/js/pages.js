@@ -92,16 +92,16 @@ const UserUploadPage = async() => {
 	})
 }
 
-const AnimalUploadPage = async() => {
-	query({type:'animal_by_id',params:[sessionStorage.animalId]})
-	.then(d=>{
-		makeAnimalUploaderImage({
-			namespace:'animal-upload',
-			folder:'',
-			name:d.result[0].img
-		})
-	})
-}
+// const AnimalUploadPage = async() => {
+// 	query({type:'animal_by_id',params:[sessionStorage.animalId]})
+// 	.then(d=>{
+// 		makeAnimalUploaderImage({
+// 			namespace:'animal-upload',
+// 			folder:'',
+// 			name:d.result[0].img
+// 		})
+// 	})
+// }
 
 
 

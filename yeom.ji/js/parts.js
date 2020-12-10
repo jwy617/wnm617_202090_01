@@ -23,6 +23,8 @@ const makeUserProfile = templater(o=>`
 		</div>
 		<h2 style="margin:0; padding:0.5em 0;">${o.name}</h2>
 		<div style="margin-bottom:1em">@${o.username}</div>
+		<div>${o.favorite_animal} is my favorite doggie!</div>
+		<hr>
 	</div>
 	`);
 	
@@ -44,19 +46,26 @@ const makeUserProfile = templater(o=>`
 
 
 
-const makeUploaderImage = ({namespace,folder,name}) => {
-	console.log(namespace,folder,name)
-	$(`#${namespace}-image`).val(folder+name);
-	$(`#${namespace}-page .image-uploader`)
-		.css({'background-image':`url(${folder+name}`})
+// const makeUploaderImage = ({namespace,folder,name}) => {
+// 	console.log(namespace,folder,name)
+// 	$(`#${namespace}-image`).val(folder+name);
+// 	$(`#${namespace}-page .image-uploader`)
+// 		.css({'background-image':`url(${folder+name}`})
+// }
+
+const makeUploaderImage = (el, name, folder='') => {
+	$(el).parent().css({'background-image':`url(${folder+name}`}).addClass('picked')
+		.prev().val(folder+name);
 }
 
-const makeAnimalUploaderImage = ({namespace,folder,name}) => {
-	console.log(namespace,folder,name)
-	$(`#${namespace}-image`).val(folder+name);
-	$(`#${namespace}-page .animal-image-uploader`)
-		.css({'background-image':`url(${folder+name}`})
-}
+
+
+// const makeAnimalUploaderImage = ({namespace,folder,name}) => {
+// 	console.log(namespace,folder,name)
+// 	$(`#${namespace}-image`).val(folder+name);
+// 	$(`#${namespace}-page .animal-image-uploader`)
+// 		.css({'background-image':`url(${folder+name}`})
+// }
 
 
 
@@ -70,6 +79,7 @@ const makeAnimalProfile = templater(o=>`
 		<h2 style="margin:0; padding:0.5em 0">${o.name}</h2>
 		<div class="small-text" style="padding-bottom:1em"><strong>Last Created</strong> ${o.date_create}</div>
 
+		<div><strong>Gender</strong> ${o.gender}</div>
 		<div><strong>Breed</strong> ${o.breed}</div>
 		<div><strong>Size</strong> ${o.size}</div>
 		<div><strong>Color</strong> ${o.color}</div>
@@ -113,19 +123,19 @@ const FormControl = ({namespace,name,displayname,type,placeholder,value}) => {
 const makeUserEditForm = o => `
 ${FormControl({
 	namespace:'user-edit',
-	name:'name',
-	displayname:'Full Name',
-	type:'text',
-	placeholder:'Type your full name',
-	value:o.name
-})}
-${FormControl({
-	namespace:'user-edit',
 	name:'username',
 	displayname:'Username',
 	type:'text',
 	placeholder:'Type your username',
 	value:o.username
+})}
+${FormControl({
+	namespace:'user-edit',
+	name:'name',
+	displayname:'Full Name',
+	type:'text',
+	placeholder:'Type your full name',
+	value:o.name
 })}
 ${FormControl({
 	namespace:'user-edit',
@@ -135,6 +145,18 @@ ${FormControl({
 	placeholder:'Type your email',
 	value:o.email
 })}
+${FormControl({
+	namespace:'user-edit',
+	name:'favorite_animal',
+	displayname:'Favorite Animal',
+	type:'text',
+	placeholder:'Type your favorite animal',
+	value:o.favorite_animal
+})}
+<div class="form-control">
+   <label for="animal-edit-about_me" class="form-label">Description</label>
+   <textarea id="animal-edit-about_me" class="form-input" data-role="none" placeholder="Tell us about you" style="height:6em">${o.about_me}</textarea>
+</div>
 `;
 
 
@@ -153,6 +175,14 @@ ${FormControl({
 	type:'text',
 	placeholder:'Type the doggie name',
 	value:o.name
+})}
+${FormControl({
+	namespace:'animal-edit',
+	name:'gender',
+	displayname:'Gender',
+	type:'text',
+	placeholder:'Type the gender',
+	value:o.gender
 })}
 ${FormControl({
 	namespace:'animal-edit',
@@ -197,7 +227,7 @@ ${FormControl({
 
 
 
-const drawAnimalList = (a, empty_phrase=`<div class="animallist-name">No animals yet. Start adding one!</div>`) => {
+const drawAnimalList = (a, empty_phrase=`<div class="animallist-name" style="padding-top:1em;">No animals yet. Start adding one!</div>`) => {
 	$("#list-page .animallist").html(
 		a.length ? makeAnimalList(a) : empty_phrase
 	)
