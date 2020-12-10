@@ -19,10 +19,18 @@
       return 'http://via.placeholder.com/400/'+
         tags.integer(700,999) + '/fff/?text=' + this.username;
     },
-    date_create: '{{date(new Date(2020, 0, 1), new Date(), "YYYY-MM-dd hh:mm:ss")}}'
-
+    favorite_animal: function (tags) {
+      var animals = ['Golden Retriever', 'Border Collie', 'Bull Terrier', 'Poodle', 'Mixed', 'Doberman', 'Bichon Frise', 'Maltese', 'Corgi'];
+      return animals[tags.integer(0, animals.length - 1)];
+    },
+    about_me: '{{lorem(1, "paragraphs")}}',
+    date_create: '{{date(new Date(2019, 0, 1), new Date(), "YYYY-MM-dd hh:mm:ss")}}'
   }
 ]
+
+
+
+
 
 
 
@@ -37,9 +45,13 @@
     
     name: '{{company()}}',
     
-    breed: '{{random("Golden Retriever", "Border Collie", "Pitbull Terrier", "Standard Poodle", "Mixed", "Doberman")}}',
+    gender: '{{random("Male", "Female")}}',
     
-    color: '{{random("White", "Brown", "Black")}}'
+    breed: '{{random("Golden Retriever", "Border Collie", "Bull Terrier", "Poodle", "Mixed", "Doberman", "Bichon Frise", "Maltese", "Corgi")}}',
+    
+    size: '{{random("X-Small", "Small", "Medium","Large", "X-Large")}}',
+    
+    color: '{{random("White", "Yellow", "Brown", "Blue", "Red", "Grey", "Black", "Bicolor", "Tricolor")}}',
 
     description: '{{lorem(3,"sentences")}}',
     
@@ -47,7 +59,7 @@
       return 'https:via.placeholder.com/400/'+
         tags.integer(700,999) + '/fff/?text=' + this.name;
     },
-    date_create: '{{date(new Date(2020, 0, 1), new Date(), "YYYY-MM-dd hh:mm:ss")}}'
+    date_create: '{{date(new Date(2019, 0, 1), new Date(), "YYYY-MM-dd hh:mm:ss")}}'
   }
 ]
 

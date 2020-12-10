@@ -1,48 +1,4 @@
--- phpMyAdmin SQL Dump
--- version 4.9.4
--- https://www.phpmyadmin.net/
---
--- Host: localhost:3306
--- Generation Time: Dec 10, 2020 at 12:59 AM
--- Server version: 5.6.49-cll-lve
--- PHP Version: 7.3.6
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `aau_`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `track_locations`
---
-
-CREATE TABLE `track_locations` (
-  `id` int(11) NOT NULL,
-  `animal_id` int(11) NOT NULL,
-  `lat` decimal(9,6) NOT NULL,
-  `lng` decimal(9,6) NOT NULL,
-  `description` text NOT NULL,
-  `photo` varchar(256) NOT NULL,
-  `icon` varchar(256) NOT NULL,
-  `date_create` datetime NOT NULL,
-  `date_update` datetime NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `track_locations`
---
 
 INSERT INTO `track_locations` (`id`, `animal_id`, `lat`, `lng`, `description`, `photo`, `icon`, `date_create`, `date_update`) VALUES
 (1, 41, 37.734599, -122.364951, 'Adipisicing sit ea commodo proident enim. Duis incididunt amet esse voluptate ex laborum elit. Consequat deserunt proident commodo aute dolor eiusmod eu.', 'https:via.placeholder.com/400/', 'https:via.placeholder.com/100/?text/=ICON', '2020-09-09 11:46:23', '0000-00-00 00:00:00'),
