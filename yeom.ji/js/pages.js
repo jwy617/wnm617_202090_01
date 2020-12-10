@@ -65,6 +65,9 @@ const UserProfilePage = async() => {
 	console.log(d);
 
 	$("#user-profile-page .profile").html(makeUserProfile(d.result))
+
+	// $("#user-profile-page .activity").html(makeUserActivityList(d.result))
+
 }
 
 
@@ -83,6 +86,17 @@ const UserUploadPage = async() => {
 	.then(d=>{
 		makeUploaderImage({
 			namespace:'user-upload',
+			folder:'',
+			name:d.result[0].img
+		})
+	})
+}
+
+const AnimalUploadPage = async() => {
+	query({type:'animal_by_id',params:[sessionStorage.animalId]})
+	.then(d=>{
+		makeAnimalUploaderImage({
+			namespace:'animal-upload',
 			folder:'',
 			name:d.result[0].img
 		})

@@ -33,6 +33,7 @@ $(()=>{
 
 			case "animal-profile-page": AnimalProfilePage(); break;
 			case "animal-edit-page": AnimalEditPage(); break;
+			case "animal-upload-page": AnimalUploadPage(); break;
 
 			case "location-add-page": LocationAddPage(); break;
 		}
@@ -78,6 +79,9 @@ $(()=>{
 	.on("click",'.js-user-upload',function(e){
 		checkUserUploadForm();
 	})
+	.on("click",'.js-animal-upload',function(e){
+		checkAnimalUploadForm();
+	})
 
 
 
@@ -86,6 +90,8 @@ $(()=>{
 		checkListFilter($(this).data());
 	})
 
+	
+
 	.on("change",".image-uploader input",function(){
 		checkUpload(this.files[0])
 		.then(d=>{
@@ -93,6 +99,18 @@ $(()=>{
 			makeUploaderImage({
 				namespace:'user-upload',
 				folder:'uploads/',
+				name:d.result
+			})
+		})
+	})
+
+	.on("change",".animal-image-uploader input",function(){
+		checkAnimalUpload(this.files[0])
+		.then(d=>{
+			console.log(d)
+			makeAnimalUploaderImage({
+				namespace:'animal-upload',
+				folder:'uploads_animals/',
 				name:d.result
 			})
 		})
@@ -111,8 +129,9 @@ $(()=>{
 		$.mobile.navigate('#animal-profile-page');
 	})
 	.on("click",'.js-animal-delete',function(e){
-	checkAnimalDelete($(this).data("id"));
+		checkAnimalDelete($(this).data("id"));
 	})
+
 
 
 

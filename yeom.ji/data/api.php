@@ -65,6 +65,20 @@ function makeUpload($file,$folder) {
 }
 
 
+function makeAnimalUpload($file,$folder) {
+	$filename = microtime(true) . "_" . $_FILES[$file]['name'];
+
+	if(@move_uploaded_file(
+		$_FILES[$file]['tmp_name'],
+		$folder.$filename
+	)) return ['result'=>$filename];
+	else return [
+		"error"=>"File Upload Failed",
+		"_FILES"=>$_FILES,
+		"filename"=>$filename
+	];
+}
+
 
 
 
@@ -112,6 +126,7 @@ function makeStatement($data) {
 				WHERE a.user_id=?
 				GROUP BY l.animal_id
 				",$p);
+
 
 
 		/* ----- SEARCH ------ */
@@ -211,6 +226,15 @@ function makeStatement($data) {
 				",$p,false);
 			return ["result"=>"success"];
 
+		case "update_animal_image":
+			$r = makeQuery($c,"UPDATE
+				`track_animals`
+				SET
+				`img` = ?
+				WHERE `id` = ?
+				",$p,false);
+			return ["result"=>"success"];
+
 
 
 
@@ -239,6 +263,12 @@ if(!empty($_FILES)) {
 	$r = makeUpload("image","../uploads/");
 	die(json_encode($r));
 }
+
+if(!empty($_FILES)) {
+	$r = makeAnimalUpload("image","../uploads_animals/");
+	die(json_encode($r));
+}
+
 
 
 

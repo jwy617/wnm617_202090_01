@@ -5,8 +5,8 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="mobile-web-app-capable" content="yes">
 
-	<link rel="apple-touch-icon" href="./site_logo_2.png">
-	<link rel="logo" href="./site_logo_2.png">
+	<link rel="apple-touch-icon" href="./site_logo_favicon_1.png">
+	<link rel="favicon" href="./site_logo_favicon_1.png">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>doggie voyage</title>
@@ -41,10 +41,7 @@
 			<div class="flex-stretch"></div>
 
 			<div class="display-flex flex-align-center flex-justify-center">
-				<img src="./site_logo_2.png" style="width:45vw;height:45vw;" classs="icon" alt="">
-			</div>
-			<div class="display-flex flex-align-center flex-justify-center">
-				<img src="img/logo_2_hor.png" style="width:90vw">
+				<img src="./site_logo_hor.png" style="width:75vw;" alt="">
 			</div>
 
 			<div class="flex-stretch"></div>
@@ -59,14 +56,15 @@
 					<input id="signin-password" type="password" class="form-input" data-role="none" placeholder="Type your password">
 				</div>
 				<div class="form-control">
-					<input type="submit" data-role="none" class="form-button" value="Sign In">
+					<input type="submit" data-role="none" class="form-button" value="Log In">
 				</div>
 				<div class="form-control" style="text-align: left; font-size: 0.8em"><a href="#forgot-page">Forgot your password?</a>
 				</div>
-				<div class="form-control" style="text-align: center; font-size: 0.8em; padding-top: 1em"> Don't have an account? <a href="#signup-page">Sign up here</a>
+				<div class="form-control" style="text-align: center; font-size: 0.8em; padding-top: 2.5em"> If you are new to doggie voyage, <a href="#signup-page">Sign Up</a>
 				</div>
 			</form>
-			
+
+			<div class="flex-stretch"></div>			
 		</div>
 
 		<div class="modal" id="signin-warning">
@@ -82,7 +80,7 @@
 		<div data-role="main">
 		<div class="overscroll">
 			<div class="flex-stretch display-flex flex-align-center flex-justify-center">
-				<h1 style="text-align: center; line-height: 1.5em">Join <br><span style="color: var(--color-main-medium)">Doggie Voyage</span><br> Today!</h1>
+				<h1 style="text-align: center; line-height: 1.5em">Join <br><span style="color: var(--color-main-medium)">doggie voyage</span><br> Today!</h1>
 			</div>
 			<form id="signup-form" data-ajax="false" style="padding: 0.5 1em">
 				<div class="form-control">
@@ -104,7 +102,7 @@
 				<div class="form-control">
 					<button type="submit" class="form-button" data-role="none">Create an Account</button>
 				</div>
-				<div class="form-control" style="text-align: center; font-size: 0.8em; padding-top: 1em"> Already have an account? <a href="#signin-page">Sign in here</a>
+				<div class="form-control" style="text-align: center; font-size: 0.8em; padding-top: 1em"> Already have an account? <a href="#signin-page">Log In</a>
 				</div>
 			</form>
 			<div class="flex-stretch"></div>
@@ -132,7 +130,7 @@
 				<div class="form-control">
 					<a href="#" class="form-button">Send Email</a>
 				</div>
-				<div class="form-control" style="text-align: center; font-size: 0.8em; padding-top: 1em"> Remember your password? <a href="#signin-page">Sign in here</a>
+				<div class="form-control" style="text-align: center; font-size: 0.8em; padding-top: 1em"> Remembered your password? <a href="#signin-page">Log In</a>
 				</div>
 			</form>
 			<div class="flex-stretch"></div>
@@ -169,9 +167,9 @@
 
 		<footer data-role="footer">
 			<ul>
-				<li><a href="#recent-page">Map</a></li>
-				<li><a href="#list-page">List</a></li>
-				<li><a href="#user-profile-page">Profile</a></li>
+				<li><a href="#recent-page"><img src="img/icon/map_7.png" class="footer-icon-active"></a></li>
+				<li><a href="#list-page"><img src="img/icon/list_3.png" class="footer-icon"></a></li>
+				<li><a href="#user-profile-page"><img src="img/icon/profile_3.png" class="footer-icon"></a></li>
 			</ul>
 		</footer>
 
@@ -221,14 +219,13 @@
 
 <!-- LIST PAGE -->
 	<section data-role="page" id="list-page">
-		<header data-role="header" style="padding: 0 1em; height: auto">
+		<header data-role="header" style="padding: 0 1em; height: auto; background-color: var(--color-main-medium);">
 			<form class="hotdog form-control" id="list-search-form" data-ajax="false" >
 				<input type="search" id="list-search-input" data-role="none" placeholder="Search your doggies">
 			</form>
 		</header>
-		<header data-role="header" style="padding: 0 1em">
+		<header data-role="header" style="padding: 0 1em; background-color: var(--color-main-medium); color: var(--color-white);">
 			<div class="filter-list">
-				<!-- <div class="filter" data-field="breed" data-value="">All</div> -->
 			</div>
 		</header>
 
@@ -245,9 +242,9 @@
 
 		<footer data-role="footer">
 			<ul>
-				<li><a href="#recent-page">Map</a></li>
-				<li><a href="#list-page">List</a></li>
-				<li><a href="#user-profile-page">Profile</a></li>
+				<li><a href="#recent-page"><img src="img/icon/map_7.png" class="footer-icon"></a></li>
+				<li><a href="#list-page"><img src="img/icon/list_3.png" class="footer-icon-active"></a></li>
+				<li><a href="#user-profile-page"><img src="img/icon/profile_3.png" class="footer-icon"></a></li>
 			</ul>
 		</footer>
 	</section>
@@ -278,10 +275,9 @@
 			<form id="animal-add-form" data-ajax="false" style="padding: 0 1em">
 
 				<input type="hidden" id="animal-add-destination" value="#list-page">
-
-				<div class="form-control">
+<!-- 				<div class="form-control">
 					<button data-role="none" class="form-button" style="background-color: var(--color-neutral-mediumer); color: var(--color-main-medium)"><a href="#">Click here to add a photo</a></button>
-				</div>
+				</div> -->
 				<div class="form-control">
 					<label for="animal-add-name" class="form-label">Name</label>
 					<input id="animal-add-name" type="text" class="form-input" data-role="none" placeholder="Name of the dog">
@@ -346,7 +342,6 @@
 				<ul>
 					<li class="btn-back"><a href="#" data-rel="back">Back</a></li>
 					<li class="flex-stretch"></li>
-					<!-- <li><a href="#" class="js-location-add">Save</a></li> -->
 				</ul>
 		</header>
 		<div data-role="main">
@@ -382,10 +377,11 @@
 <!-- ANIMAL PROFILE PAGE -->
 	<section data-role="page" id="animal-profile-page">
 		<header data-role="header">
-			<h1>Doggie Profile</h1>
+			<!-- <h1>Doggie Profile</h1> -->
 			<ul>
 				<li class="btn-back"><a href="#" data-rel="back">Back</a></li>
 				<li class="flex-stretch"></li>
+				<li><a href="#animal-edit-page">Edit</a></li>
 			</ul>	
 		</header>
 		<div data-role="main">
@@ -417,9 +413,32 @@
 			<div class="overscroll">
 				<form id="animal-edit-form" data-ajax="false" style="padding:1em">
 				</form>
-				<div class="form-control">
+<!-- 				<div class="form-control">
 					<a href="#" class="js-animal-edit"><input type="submit" value="Save" data-role="none" class="form-button"></a>
-				</div>
+				</div> -->
+			</div>
+		</div>
+	</section>
+
+<!-- ANIMAL UPLOAD PAGE -->
+	<section data-role="page" id="animal-upload-page">
+		<header data-role="header">
+		<h1>Upload Photo</h1>
+			<ul>
+				<li class="btn-back"><a href="#" data-rel="back">Back</a></li>
+				<li class="flex-stretch"></li>
+				<li><a href="#" class="js-animal-upload">Save</a></li>
+			</ul>
+		</header>
+		<div data-role="main">
+			<form id="animal-upload-form" data-ajax="false">
+				<input type="hidden" id="animal-upload-image">
+				<label class="animal-image-uploader full">
+					<input type="file" data-role="none" id="animal-upload-input">
+				</label>
+			</form>
+			<div class="form-control" style="padding: 0.7em 1em">
+				<label for="animal-upload-input" class="form-new">Choose Image</label>
 			</div>
 		</div>
 	</section>	
@@ -444,14 +463,16 @@
 			</ul>		
 		</header>
 		<div data-role="main">
-			<div class="overscroll" style="padding-top: 2em">
+			<div class="overscroll">
 
 			<div class="profile"></div>
 
-			<div class="profile-containter">
+<!-- 			<div class="profile-containter">
 				<div># of dogs | 5</div>
 				<div># of total reports | 12</div>
-			</div>
+			</div> -->
+
+			<!-- <div class="activity"></div> -->
 
 			<h4 style="margin: 1em">My Activity</h4>
 				<div class="profile-activity-containter" data-role="none">
@@ -484,13 +505,14 @@
 						<p class="">Added <strong>Brainquil</strong>'s new activity.</p>
 					</div>
 				</div>
+
 			</div>
 		</div>
 		<footer data-role="footer">
 			<ul>
-				<li><a href="#recent-page">Map</a></li>
-				<li><a href="#list-page">List</a></li>
-				<li><a href="#user-profile-page">Profile</a></li>
+				<li><a href="#recent-page"><img src="img/icon/map_7.png" class="footer-icon"></a></li>
+				<li><a href="#list-page"><img src="img/icon/list_3.png" class="footer-icon"></a></li>
+				<li><a href="#user-profile-page"><img src="img/icon/profile_3.png" class="footer-icon-active"></a></li>
 			</ul>
 		</footer>
 	</section>
@@ -501,7 +523,7 @@
 		<header data-role="header">
 		<h1>Upload Photo</h1>
 			<ul>
-				<li><a href="#" data-rel="back">Back</a></li>
+				<li class="btn-back"><a href="#" data-rel="back">Back</a></li>
 				<li class="flex-stretch"></li>
 				<li><a href="#" class="js-user-upload">Save</a></li>
 			</ul>
@@ -514,7 +536,7 @@
 				</label>
 			</form>
 			<div class="form-control" style="padding: 0.7em 1em">
-				<label for="user-upload-input" class="form-button">Choose Image</label>
+				<label for="user-upload-input" class="form-new">Choose Image</label>
 			</div>
 		</div>
 	</section>

@@ -15,26 +15,32 @@ const makeAnimalList = templater(o=>`
 
 const makeUserProfile = templater(o=>`
 	<div class="profile-containter">
-		<div class="user-profile-image">
+		<div class="animal-profile-image">
 			<img src="${o.img}" alt="">
-			<a href="#user-upload-page" class="floater bottom right"><img class="icon" src="img/icon/edit_blue.png" alt=""></a>
+			<div class="floater right bottom">
+				<a href="#user-upload-page" class="btn-circle" style="color: var(--color-main-medium)"><span class="material-icons icon-edit">edit</span></a>
+			</div>
 		</div>
-		<h2 style="margin:0">${o.name}</h2>
-		<div style="margin:1em">@${o.username}</div>
+		<h2 style="margin:0; padding:0.5em 0;">${o.name}</h2>
+		<div style="margin-bottom:1em">@${o.username}</div>
 	</div>
 	`);
-			
+	
+
 			
 
-const makeUserActivityList = (o) => {
-  return `
-	<div class="animallist-item">
-		<div class="profile-activity">
-			<div class="profile-activity-date">${o.date_create}</div>
-			<div>New Activity: ${o.name}</div>
-		</div>
-	</div>
-`;}
+// const makeUserActivityList = (o) => {
+//   return `
+// 	<h4 style="margin: 1em">My Activity</h4>
+// 	<div class="profile-activity-containter" data-role="none">
+// 		<div class="profile-activity">
+// 			<div class="profile-activity-date">${o.date_create}</div>
+// 			<div>New Activity: ${o.name}</div>
+// 			<div class="form-button js-animal-jump" data-id="${o.animal_id}" style="width:100%">Visit</div>
+// 		</div>
+// 	</div>
+// `;}
+
 
 
 
@@ -45,25 +51,36 @@ const makeUploaderImage = ({namespace,folder,name}) => {
 		.css({'background-image':`url(${folder+name}`})
 }
 
+const makeAnimalUploaderImage = ({namespace,folder,name}) => {
+	console.log(namespace,folder,name)
+	$(`#${namespace}-image`).val(folder+name);
+	$(`#${namespace}-page .animal-image-uploader`)
+		.css({'background-image':`url(${folder+name}`})
+}
+
 
 
 
 const makeAnimalProfile = templater(o=>`
 	<div class="animal-profile">
-		<div class="animal-profile-image display-flex flex-justify-center">
+		<div class="animal-profile-image">
 			<img src="${o.img}" alt="">
 		</div>
-		<div class="animallist-name">${o.name}</div>
+		
+		<h2 style="margin:0; padding:0.5em 0">${o.name}</h2>
+		<div class="small-text" style="padding-bottom:1em"><strong>Last Created</strong> ${o.date_create}</div>
+
 		<div><strong>Breed</strong> ${o.breed}</div>
 		<div><strong>Size</strong> ${o.size}</div>
 		<div><strong>Color</strong> ${o.color}</div>
-		<div><strong>Last Created</strong> ${o.date_create}</div>
+
 		<div><p>${o.description}</p></div>
-		<div class="form-control">
-			<div class="form-button"><a href="#animal-edit-page">Edit</a></div>
-		</div>
 	</div>
 	`);
+
+//		<div class="form-control">
+//			<a href="#animal-edit-page"><input type="submit" value="Edit" data-role="none" class="form-button"></a>
+//		</div>
 
 
 
@@ -125,6 +142,9 @@ ${FormControl({
 const makeAnimalEditForm = o => `
 <div class="animal-profile-image display-flex flex-justify-center">
 	<img src="${o.img}">
+	<div class="floater right bottom">
+		<a href="#animal-upload-page" class="btn-circle" style="color: var(--color-main-medium)"><span class="material-icons icon-edit">edit</span></a>
+	</div>
 </div>
 ${FormControl({
 	namespace:'animal-edit',
@@ -163,11 +183,15 @@ ${FormControl({
    <textarea id="animal-edit-description" class="form-input" data-role="none" placeholder="Type a description" style="height:6em">${o.description}</textarea>
 </div>
 
-`;
+<div class="form-control">
+	<a href="#" class="js-animal-edit"><input type="submit" value="Save" data-role="none" class="form-button"></a>
+</div>
 
-// <div class="form-control">
-// 	<a href="#" class="js-animal-delete form-delete" data-id="${o.id}">Delete</a>
-// </div>
+<div class="form-control">
+	<a href="#" class="js-animal-delete form-delete" data-id="${o.id}">Delete</a>
+</div>
+
+`;
 
 
 

@@ -26,7 +26,7 @@
 	--color-warning: #FFD23F;
 	--color-success: #228572;
 
-	--header-height: 3rem;
+	--header-height: 3.5rem;
 }
 
 body {
@@ -45,6 +45,9 @@ h6 {
 	font-family: 'Chivo', sans-serif;
 	font-weight: bold;
 }
+.small-text {
+	font-size: 0.8em;
+}
 
 a {
 	color: inherit;
@@ -53,6 +56,7 @@ a {
 }
 	a:hover {
 		text-decoration: underline;
+		opacity: 80%;
 	}
 
 .list li {
@@ -164,7 +168,7 @@ a {
 	width: 100%;
 	display: inline-flex;
 	border-width: 0;
-	background-color: var(--color-neutral-lighter);	
+	background-color: var(--color-white);	
 	padding: 0.5em 1em;
 	border-radius: 0.3em;
 	font: inherit;
@@ -226,20 +230,20 @@ a {
 }
 .ui-header {
 	flex: none;
-	height: 3.5em;
-	line-height: 3.5em;
+	height: var(--header-height);
+	line-height: var(--header-height);
 	border-width: 0;
-	background-color: var(--color-white);
+	background-color: var(--color-main-medium);
 	box-shadow: 0 0 5px rgba(0,0,0,0.15);
 	position: relative;
 	overflow: hidden;
 }
 .ui-footer {
 	flex: none;
-	height: 3.5em;
-	line-height: 3.5em;
+	height: 4em;
+	line-height: var(--header-height);
 	border-width: 0;
-	background-color: var(--color-neutral-light);
+	background-color: var(--color-white);
 	color: var(--color-main-medium);
 	box-shadow: 0 0 5px rgba(0,0,0,0.15);
 	position: relative;
@@ -307,6 +311,10 @@ a {
 	background-position: center;
 	background-size: cover;
 }*/
+#user-profile-page [data-role='main'] {
+	/*background-color: var(--color-main-medium); */
+}
+
 
 
 
@@ -318,9 +326,9 @@ a {
 	width: 100%;
 	height: 100%;
 }
-.logo {
-	width: 1em;
-	height: 1em;
+.favicon {
+	width: 1.5em;
+	height: 1.5em;
 	vertical-align: text-bottom;
 }
 .icon {
@@ -331,6 +339,18 @@ a {
 .ui-header .icon {
 	vertical-align: middle;
 }
+.footer-icon {
+	width: auto;
+	height: 1.6em;
+	margin-top: 10px;
+}
+.footer-icon-active {
+	opacity: 60%;
+	width: auto;
+	height: 1.6em;
+	margin-top: 10px;
+}
+
 
 
 
@@ -463,8 +483,6 @@ a {
 
 
 
-/*SUCCESS*/
-
 
 
 
@@ -493,7 +511,7 @@ a {
 	box-shadow: 2px 2px 5px rgba(0,0,0,0.15);
 }
 .btn-back {
-	color: var(--color-main-medium);
+	color: var(--color-white);
 	font-size: 0.8em;
 }
 
@@ -511,52 +529,6 @@ a {
 }
 
 
-
-
-/*GOOGLE ICONS*/
-.material-icons {
-	font-family: 'Material Icons';
-	font-weight: normal;
-	font-style: normal;
-	font-size: 24px;
-	display: inline-block;
-	line-height: 1;
-	text-transform: none;
-	letter-spacing: normal;
-	word-wrap: normal;
-	white-space: nowrap;
-	direction: ltr;
-}
-.icon-current-location {
-	position: absolute;
-	top: 50%;
-	bottom: 50%;
-	transform: translate(-50%,calc(-50% - 0.5em));
-}
-.icon-location {
-	position: absolute;
-	top: 40%;
-	left: 50%;
-	color: var(--color-main-medium);
-}
-.icon-location-2 {
-	position: absolute;
-	top: 74%;
-	left: 20%;
-	color: var(--color-main-medium);
-}
-.icon-location-3 {
-	position: absolute;
-	top: 60%;
-	left: 75%;
-	color: var(--color-main-medium);
-}
-.icon-location-4 {
-	position: absolute;
-	top: 20%;
-	left: 60%;
-	color: var(--color-main-medium);
-}
 
 
 
@@ -611,20 +583,30 @@ a {
 .animal-profile {
 	padding: 1em;
 }
-.animal-profile-image img {
+/*.animal-profile-image img {
 	margin: 0;
 	padding: 0;
 	object-fit: cover;
-	width: calc(50vmin - 2em);
+	width: 100%;
 	height: calc(50vmin - 2em);
+}*/
+
+.animal-profile-image {
+	position: relative;
 }
+.animal-profile-image>img {
+	width: 100%;
+	height: calc(50vmin - 2em);
+	object-fit: cover;
+}
+
 
 .user-profile-image {
 	position: relative;
 }
 .user-profile-image>img {
-	width: calc(100vmin - 4em);
-	height: calc(100vmin - 4em);
+	width: calc(50vmin - 4em);
+	height: calc(50vmin - 4em);
 	margin: 2em;
 	border-radius: 50%;
 	object-fit: cover;
@@ -721,18 +703,24 @@ a {
 .profile-bottom {
 	flex: 1;
 	position: relative;
-	overflow:auto;
+	overflow: auto;
 }
 
-
+.animal-popup {
+	width: auto;
+	overflow: hidden;
+}
 .animal-popup img {
-	width: 80px;
+	width: 100%;
+	height: 80px;
+	object-fit: cover;
 }
 .animal-popup h2 {
-	margin: 0;
+	margin: 0px;
+	padding-bottom: 0.2em;
 }
 .animal-popup-description {
-	padding: 1em;
+	padding: 0.5em;
 }
 
 
@@ -780,3 +768,72 @@ a {
 	background-size:contain;
 	background-repeat:no-repeat;
 }
+
+
+.animal-image-uploader input {
+	display: none;
+}
+.animal-image-uploader.full {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-position:center;
+	background-size:contain;
+	background-repeat:no-repeat;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*GOOGLE ICONS*/
+.material-icons {
+	font-family: 'Material Icons';
+	font-weight: normal;
+	font-style: normal;
+	font-size: 24px;
+	display: inline-block;
+	line-height: 1;
+	text-transform: none;
+	letter-spacing: normal;
+	word-wrap: normal;
+	white-space: nowrap;
+	direction: ltr;
+}
+.icon-edit {
+	position: absolute;
+	top: 50%;
+	bottom: 50%;
+	transform: translate(-50%,calc(-50% - 0.5em));
+}
+.icon-location {
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	color: var(--color-main-medium);
+}
+
+

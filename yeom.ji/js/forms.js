@@ -70,6 +70,34 @@ const checkUserUploadForm = () => {
 
 
 
+const checkAnimalUpload = file => {
+	let fd = new FormData();
+	fd.append("image",file);
+
+	return fetch('data/api.php',{
+		method:'POST',
+		body:fd
+	}).then(d=>d.json());
+}
+
+const checkAnimalUploadForm = () => {
+	let upload = $("#animal-upload-image").val()
+	if(upload=="") return;
+
+	query({
+		type:'update_animal_image',
+		params:[upload,sessionStorage.animalId]
+	}).then(d=>{
+		if(d.error) {
+			throw d.error;
+		}
+		window.history.go(-2);
+	})
+}
+
+
+
+
 const checkAnimalAddForm = () => {
 	let name = $("#animal-add-name").val();
 	let breed = $("#animal-add-breed").val();
