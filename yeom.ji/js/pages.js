@@ -80,14 +80,8 @@ const UserUploadPage = async() => {
 		type:'user_by_id',
 		params:[sessionStorage.userId]})
 	.then(d=>{
-// 		makeUploaderImage({
-// 			namespace:'user-upload',
-// 			folder:'',
-// 			name:d.result[0].img
-// 		})
-// 	})
-// }
 		console.log(d)
+
 		makeUploaderImage($("#user-upload-input"),d.result[0].img)
 		});
 	}
