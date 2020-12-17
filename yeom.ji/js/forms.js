@@ -11,8 +11,10 @@ const checkSignupForm = () => {
 		throw "Passwords don't match"
 		return;
 	} else {
-		query({type:'insert_user', params:[username,email,password]})
-		.then(d=>{
+		query({
+			type:'insert_user', 
+			params:[username,email,password]
+		}).then(d=>{
 			if(d.error) {
 				throw d.error;
 			}
@@ -33,7 +35,7 @@ const checkUserEditForm = () => {
 
 	query({
 		type:'update_user', 
-		params:[name,username,email,sessionStorage.userId]
+		params:[name,username,email,favorite_animal,about_me,sessionStorage.userId]
 	}).then(d=>{
 		if(d.error) {
 			throw d.error;
@@ -72,36 +74,12 @@ const checkUserUploadForm = () => {
 
 
 
-// const checkAnimalUpload = file => {
-// 	let fd = new FormData();
-// 	fd.append("image",file);
-
-// 	return fetch('data/api.php',{
-// 		method:'POST',
-// 		body:fd
-// 	}).then(d=>d.json());
-// }
-
-// const checkAnimalUploadForm = () => {
-// 	let upload = $("#animal-upload-image").val()
-// 	if(upload=="") return;
-
-// 	query({
-// 		type:'update_animal_image',
-// 		params:[upload,sessionStorage.animalId]
-// 	}).then(d=>{
-// 		if(d.error) {
-// 			throw d.error;
-// 		}
-// 		window.history.go(-2);
-// 	})
-// }
-
 
 
 
 const checkAnimalAddForm = () => {
 	let name = $("#animal-add-name").val();
+	let gender = $("#animal-add-gender").val();
 	let breed = $("#animal-add-breed").val();
 	let size = $("#animal-add-size").val();
 	let color = $("#animal-add-color").val();
@@ -109,7 +87,7 @@ const checkAnimalAddForm = () => {
 
 	query({
 		type:'insert_animal',
-		params:[sessionStorage.userId,name,breed,size,color,description]
+		params:[sessionStorage.userId,name,gender,breed,size,color,description]
 	}).then(d=>{
 		if(d.error) {
 			throw d.error;
@@ -130,10 +108,11 @@ const checkAnimalEditForm = () => {
 	let size = $("#animal-edit-size").val();
 	let color = $("#animal-edit-color").val();
 	let description = $("#animal-edit-description").val();
+	let img = $("#animal-edit-image").val();
 
 	query({
 		type:'update_animal',
-		params:[name,gender,breed,size,color,description,sessionStorage.animalId]
+		params:[name,gender,breed,size,color,description,img,sessionStorage.animalId]
 	}).then(d=>{
 		if(d.error) {
 			throw d.error;

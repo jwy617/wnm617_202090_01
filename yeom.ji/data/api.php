@@ -51,32 +51,17 @@ function makeQuery($c,$ps,$p,$makeResults=true) {
 
 
 function makeUpload($file,$folder) {
-	$filename = microtime(true) . "_" . $_FILES[$file]['name'];
+   $filename = microtime(true) . "_" . $_FILES[$file]['name'];
 
-	if(@move_uploaded_file(
-		$_FILES[$file]['tmp_name'],
-		$folder.$filename
-	)) return ['result'=>$filename];
-	else return [
-		"error"=>"File Upload Failed",
-		"_FILES"=>$_FILES,
-		"filename"=>$filename
-	];
-}
-
-
-function makeAnimalUpload($file,$folder) {
-	$filename = microtime(true) . "_" . $_FILES[$file]['name'];
-
-	if(@move_uploaded_file(
-		$_FILES[$file]['tmp_name'],
-		$folder.$filename
-	)) return ['result'=>$filename];
-	else return [
-		"error"=>"File Upload Failed",
-		"_FILES"=>$_FILES,
-		"filename"=>$filename
-	];
+   if(@move_uploaded_file(
+      $_FILES[$file]['tmp_name'],
+      $folder.$filename
+   )) return ['result'=>$filename];
+   else return [
+      "error"=>"File Upload Failed",
+      "_FILES"=>$_FILES,
+      "filename"=>$filename
+   ];
 }
 
 
@@ -224,21 +209,11 @@ function makeStatement($data) {
 				`breed` = ?,
 				`size` = ?,
 				`color` = ?,
-				`description` = ?
+				`description` = ?,
+				`img` = ?
 				WHERE `id` = ?
 				",$p,false);
 			return ["result"=>"success"];
-
-		// case "update_animal_image":
-		// 	$r = makeQuery($c,"UPDATE
-		// 		`track_animals`
-		// 		SET
-		// 		`img` = ?
-		// 		WHERE `id` = ?
-		// 		",$p,false);
-		// 	return ["result"=>"success"];
-
-
 
 
 
@@ -267,10 +242,6 @@ if(!empty($_FILES)) {
 	die(json_encode($r));
 }
 
-if(!empty($_FILES)) {
-	$r = makeAnimalUpload("image","../uploads_animals/");
-	die(json_encode($r));
-}
 
 
 

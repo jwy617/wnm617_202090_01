@@ -6,7 +6,7 @@
 	<meta name="mobile-web-app-capable" content="yes">
 
 	<link rel="apple-touch-icon" href="./site_logo_favicon_1.png">
-	<link rel="favicon" href="./site_logo_favicon_1.png">
+	<link rel="icon" href="./site_logo_favicon_1.png">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>doggie voyage</title>
@@ -80,7 +80,7 @@
 		<div data-role="main">
 		<div class="overscroll">
 			<div class="flex-stretch display-flex flex-align-center flex-justify-center">
-				<h1 style="text-align: center; line-height: 1.5em">Join <br><span style="color: var(--color-main-medium)">doggie voyage</span><br> Today!</h1>
+				<h1 style="text-align: center; line-height: 1.5em; color:var(--color-black);">Join <br><span style="color: var(--color-main-medium)">doggie voyage</span><br> Today!</h1>
 			</div>
 			<form id="signup-form" data-ajax="false" style="padding: 0.5 1em">
 				<div class="form-control">
@@ -152,17 +152,6 @@
 	<section data-role="page" id="recent-page">
 		<div data-role="main">
 			<div class="map"></div>
-<!-- 			<div class="floater right bottom">
-				<div class="btn-circle">
-					<a href="#" data-activate="#map-add-animal">
-					<span style="color: var(--color-main-medium)">&plus;</span>
-					</a>
-				</div>
-			</div>
-
-			<div class="floater right bottom-second">
-				<div class="btn-circle"><span class="material-icons icon-current-location" style="color: var(--color-main-medium)">my_location</span></div>
-			</div> -->
 		</div>
 
 		<footer data-role="footer">
@@ -172,38 +161,6 @@
 				<li><a href="#user-profile-page"><img src="img/icon/profile_3.png" class="footer-icon"></a></li>
 			</ul>
 		</footer>
-
-		<!-- <div class="modal" id="map-add-animal">
-			<div class="modal-back" data-deactivate="#map-add-animal"></div>
-			<form class="modal-popup" id="map-add-animal-form" data-ajax="false">
-				<div class="modal-head"><h1>Add New Doggie</h1></div>
-				<div class="modal-body">
-				<div class="form-control">
-					<button data-role="none" class="form-button" style="background-color: var(--color-neutral-mediumer); color: var(--color-main-medium)"><a href="#">Click here to add a photo</a></button>
-				</div>
-					<div class="form-control">
-						<label for="map-add-name" class="form-label">Name</label>
-						<input id="map-add-name" type="text" class="form-input" data-role="none" placeholder="Name of the dog">
-					</div>
-					<div class="form-control">
-						<label for="map-add-type" class="form-label">Type</label>
-						<input id="map-add-type" type="text" class="form-input" data-role="none" placeholder="Type of the dog">
-					</div>
-					<div class="form-control">
-						<label for="map-add-size" class="form-label">Size</label>
-						<input id="map-add-size" type="text" class="form-input" data-role="none" placeholder="Size of the dog">
-					</div>
-					<div class="form-control">
-						<label for="map-add-color" class="form-label">Color</label>
-						<input id="map-add-color" type="text" class="form-input" data-role="none" placeholder="Color of the dog">
-					</div>
-				</div>
-				<div class="modal-foot">
-					<a href="#">
-					<input type="submit" value="Save" data-role="none" class="form-button"></a>
-				</div>
-			</form>
-		</div> -->
 	</section>
 
 
@@ -224,7 +181,7 @@
 				<input type="search" id="list-search-input" data-role="none" placeholder="Search your doggies">
 			</form>
 		</header>
-		<header data-role="header" style="padding: 0 1em; background-color: var(--color-main-medium); color: var(--color-white);">
+		<header data-role="header" style="padding: 0 1em; background-color: var(--color-main-medium); ">
 			<div class="filter-list">
 			</div>
 		</header>
@@ -265,7 +222,8 @@
 		<header data-role="header">
 			<h1>Add a new Doggie</h1>
 			<ul>
-				<li class="btn-back"><a href="#" data-rel="back">Back</a></li>
+				<!-- <li class="btn-back"><a href="#" data-rel="back">Back</a></li> -->
+				<li><a href="#" data-rel="back"><img src="img/icon/back_white.png" alt="" class="icon-back"></a></li>
 				<li class="flex-stretch"></li>
 			</ul>
 		</header>
@@ -283,6 +241,10 @@
 					<input id="animal-add-name" type="text" class="form-input" data-role="none" placeholder="Name of the dog">
 				</div>
 				<div class="form-control">
+					<label for="animal-add-gender" class="form-label">Gender</label>
+					<input id="animal-add-gender" type="text" class="form-input" data-role="none" placeholder="Gender of the dog">
+				</div>
+				<div class="form-control">
 					<label for="animal-add-breed" class="form-label">Breed</label>
 					<input id="animal-add-breed" type="text" class="form-input" data-role="none" placeholder="Breed of the dog">
 				</div>
@@ -296,7 +258,7 @@
 				</div>
 				<div class="form-control">
 					<label for="animal-add-description" class="form-label">Description</label>
-					<textarea id="animal-add-description" class="form-input" data-role="none"></textarea>
+					<textarea id="animal-add-description" class="form-input" data-role="none" placeholder=""></textarea>
 				</div>
 				<div class="form-control">
 					<a href="#" class="js-animal-add"><input type="submit" value="Save" data-role="none" class="form-button"></a>
@@ -322,7 +284,8 @@
 		<header data-role="header">
 			<h1>Choose Location</h1>
 				<ul>
-					<li class="btn-back"><a href="#" data-rel="back">Back</a></li>
+					<!-- <li class="btn-back"><a href="#" data-rel="back">Back</a></li> -->
+					<li><a href="#" data-rel="back"><img src="img/icon/back_white.png" alt="" class="icon-back"></a></li>
 					<li class="flex-stretch"></li>
 					<li><a href="#location-description-page">Next</a></li>
 				</ul>
@@ -338,7 +301,7 @@
 <!-- LOCATION DESCRIPTION PAGE -->
 	<section data-role="page" id="location-description-page">
 		<header data-role="header">
-			<h1>Describe the dog</h1>
+			<h1>Describe Location</h1>
 				<ul>
 					<li class="btn-back"><a href="#" data-rel="back">Back</a></li>
 					<li class="flex-stretch"></li>
@@ -346,11 +309,25 @@
 		</header>
 		<div data-role="main">
 			<div class="overscroll">
-				<form id="location-add-form" data-ajax="false" style="padding: 0.5 1em">
+				<form id="location-add-form" data-ajax="false" style="padding: 1em">
 					
 					<div class="form-control animal-profile-image">
 						<img src="https://via.placeholder.com/400/?text=Upload>" alt="">	
 					</div>
+
+<!-- 					<div>
+						<input type="hidden" id="location-add-icon">
+						<label class="image-uploader thumbnail">
+						   <input type="file" data-role="none" id="location-add-input">
+						</label>
+					</div> -->
+
+<!-- 					<div>
+						<input type="hidden" id="location-add-image">
+						<label class="image-uploader thumbnail">
+							<input type="file" data-role="none" id="location-add-upload">
+						</label>
+					</div> -->
 
 					<div class="form-control">
 						<label for="location-add-description" class="form-label">Description</label>
@@ -377,18 +354,19 @@
 <!-- ANIMAL PROFILE PAGE -->
 	<section data-role="page" id="animal-profile-page">
 		<header data-role="header">
-			<!-- <h1>Doggie Profile</h1> -->
+			<h1>Doggie Profile</h1>
 			<ul>
-				<li class="btn-back"><a href="#" data-rel="back">Back</a></li>
+				<!-- <li class="btn-back"><a href="#" data-rel="back">Back</a> -->
+				<li><a href="#" data-rel="back"><img src="img/icon/back_white.png" alt="" class="icon-back"></a></li>
 				<li class="flex-stretch"></li>
-				<li><a href="#animal-edit-page">Edit</a></li>
+				<!-- <li><a href="#animal-edit-page">Edit</a></li> -->
 			</ul>	
 		</header>
 		<div data-role="main">
 			<div class="overscroll">
 				<div class="profile-top">
 					<div class="map"></div>
-					<div class="floater right bottom">
+					<div class="floater right top">
 						<a href="#location-add-page" class="btn-circle" style="color: var(--color-main-medium)">&plus;</a>
 					</div>
 				</div>
@@ -405,7 +383,8 @@
 		<header data-role="header">
 			<h1>Edit Doggie Profile</h1>
 			<ul>
-				<li class="btn-back"><a href="#" data-rel="back">Back</a></li>
+				<!-- <li class="btn-back"><a href="#" data-rel="back">Back</a></li> -->
+				<li><a href="#" data-rel="back"><img src="img/icon/back_white.png" alt="" class="icon-back"></a></li>
 				<li class="flex-stretch"></li>
 			</ul>
 		</header>
@@ -420,31 +399,6 @@
 		</div>
 	</section>
 
-<!-- ANIMAL UPLOAD PAGE -->
-	<section data-role="page" id="animal-upload-page">
-		<header data-role="header">
-		<h1>Upload Photo</h1>
-			<ul>
-				<li class="btn-back"><a href="#" data-rel="back">Back</a></li>
-				<li class="flex-stretch"></li>
-				<li><a href="#" class="js-animal-upload">Save</a></li>
-			</ul>
-		</header>
-		<div data-role="main">
-			<form id="animal-upload-form" data-ajax="false">
-				<input type="hidden" id="animal-upload-image">
-				<label class="animal-image-uploader full">
-					<input type="file" data-role="none" id="animal-upload-input">
-				</label>
-			</form>
-			<div class="form-control" style="padding: 0.7em 1em">
-				<label for="animal-upload-input" class="form-new">Choose Image</label>
-			</div>
-		</div>
-	</section>	
-
-
-
 
 
 
@@ -456,55 +410,16 @@
 
 <!-- USER PROFILE PAGE -->
 	<section data-role="page" id="user-profile-page">
-		<header data-role="header">
+<!-- 		<header data-role="header">
 			<ul>
 				<li class="flex-stretch"></li>
-				<li><a href="#user-settings-page">Settings</a></li>
+				<li><a href="#user-settings-page"><img src="img/icon/setting_1.png" alt="" class="icon-back"></a></li>
 			</ul>		
-		</header>
+		</header> -->
 		<div data-role="main">
 			<div class="overscroll">
 
 			<div class="profile"></div>
-
-<!-- 			<div class="profile-containter">
-				<div># of dogs | 5</div>
-				<div># of total reports | 12</div>
-			</div> -->
-
-			<!-- <div class="activity"></div> -->
-
-			<h4 style="margin: 1em">My Activity</h4>
-				<div class="profile-activity-containter" data-role="none">
-					<div class="profile-activity">
-						<p class="profile-activity-date">Nov 17, 2020 17:28</p>
-						<p class="">Added <strong>Immunics</strong>'s new activity.</p>
-					</div>
-				</div>
-				<div class="profile-activity-containter" data-role="none">
-					<div class="profile-activity">
-						<p class="profile-activity-date">Nov 15, 2020 12:30</p>
-						<p class="">Added <strong>Newcube</strong>'s new activity.</p>
-					</div>
-				</div>
-				<div class="profile-activity-containter" data-role="none">
-					<div class="profile-activity">
-						<p class="profile-activity-date">Oct 29, 2020 10:05</p>
-						<p class="">Added a new dog, <strong>Immunics</strong></p>
-					</div>
-				</div>
-				<div class="profile-activity-containter" data-role="none">
-					<div class="profile-activity">
-						<p class="profile-activity-date">Oct 21, 2020 18:11</p>
-						<p class="">Added <strong>Brainquil</strong>'s new activity.</p>
-					</div>
-				</div>
-				<div class="profile-activity-containter" data-role="none">
-					<div class="profile-activity">
-						<p class="profile-activity-date">Oct 11, 2020 09:59</p>
-						<p class="">Added <strong>Brainquil</strong>'s new activity.</p>
-					</div>
-				</div>
 
 			</div>
 		</div>
@@ -523,7 +438,8 @@
 		<header data-role="header">
 		<h1>Upload Photo</h1>
 			<ul>
-				<li class="btn-back"><a href="#" data-rel="back">Back</a></li>
+				<!-- <li class="btn-back"><a href="#" data-rel="back">Back</a></li> -->
+				<li><a href="#" data-rel="back"><img src="img/icon/back_white.png" alt="" class="icon-back"></a></li>
 				<li class="flex-stretch"></li>
 				<li><a href="#" class="js-user-upload">Save</a></li>
 			</ul>
@@ -547,7 +463,8 @@
 		<header data-role="header">
 			<h1>User Settings</h1>
 			<ul>
-			<li class="btn-back"><a href="#" data-rel="back">Back</a></li>
+			<!-- <li class="btn-back"><a href="#" data-rel="back">Back</a></li> -->
+			<li><a href="#" data-rel="back"><img src="img/icon/back_white.png" alt="" class="icon-back"></a></li>
 			</ul>
 		</header>
 		<div data-role="main">
@@ -563,9 +480,10 @@
 <!-- USER EDIT PAGE -->
 	<section data-role="page" id="user-edit-page">
 		<header data-role="header">
-			<h1>Edit Profile</h1>
+			<h1>Edit User Profile</h1>
 			<ul>
-				<li class="btn-back"><a href="#" data-rel="back">Back</a></li>
+				<!-- <li class="btn-back"><a href="#" data-rel="back">Back</a></li> -->
+				<li><a href="#" data-rel="back"><img src="img/icon/back_white.png" alt="" class="icon-back"></a></li>
 				<li class="flex-stretch"></li>
 			</ul>		
 		</header>
@@ -589,7 +507,8 @@
 		<header data-role="header">
 			<h1>Change Password</h1>
 			<ul>
-				<li class="btn-back"><a href="#" data-rel="back">Back</a></li>
+				<!-- <li class="btn-back"><a href="#" data-rel="back">Back</a></li> -->
+				<li><a href="#" data-rel="back"><img src="img/icon/back_white.png" alt="" class="icon-back"></a></li>
 				<li class="flex-stretch"></li>
 			</ul>		
 		</header>
@@ -610,7 +529,7 @@
 					</div>
 					<div class="form-control">
 						<a href="#user-profile-page">
-						<button data-role="none" class="form-button">Change Password</button>
+						<button data-role="none" class="form-button">Submit</button>
 						</a>
 					</div>
 				</form>

@@ -15,57 +15,31 @@ const makeAnimalList = templater(o=>`
 
 const makeUserProfile = templater(o=>`
 	<div class="profile-containter">
-		<div class="animal-profile-image">
+		<h2 style="margin:0; padding:0.5em 0;">${o.name}</h2>
+		<div style="margin-bottom:0.5em"><strong>${o.favorite_animal}</strong> is my favorite doggie!</div>
+		<div style="padding-bottom: 4vh; text-align: left; margin: 1em;">${o.about_me}</div>
+
+		<div class="user-profile-image">
 			<img src="${o.img}" alt="">
-			<div class="floater right bottom">
-				<a href="#user-upload-page" class="btn-circle" style="color: var(--color-main-medium)"><span class="material-icons icon-edit">edit</span></a>
+			<div class="floater right top">
+				<a href="#user-upload-page" class="btn-circle-blue"><span class="material-icons icon-edit">edit</span></a>
 			</div>
 		</div>
-		<h2 style="margin:0; padding:0.5em 0;">${o.name}</h2>
-		<div style="margin-bottom:1em">@${o.username}</div>
-		<div>${o.favorite_animal} is my favorite doggie!</div>
-		<hr>
+
+		<div class="floater right top">
+			<a href="#user-settings-page" class="btn-circle-blue"><span class="material-icons icon-edit">settings</span></a>
+		</div>
 	</div>
 	`);
-	
-
-			
-
-// const makeUserActivityList = (o) => {
-//   return `
-// 	<h4 style="margin: 1em">My Activity</h4>
-// 	<div class="profile-activity-containter" data-role="none">
-// 		<div class="profile-activity">
-// 			<div class="profile-activity-date">${o.date_create}</div>
-// 			<div>New Activity: ${o.name}</div>
-// 			<div class="form-button js-animal-jump" data-id="${o.animal_id}" style="width:100%">Visit</div>
-// 		</div>
-// 	</div>
-// `;}
 
 
 
-
-// const makeUploaderImage = ({namespace,folder,name}) => {
-// 	console.log(namespace,folder,name)
-// 	$(`#${namespace}-image`).val(folder+name);
-// 	$(`#${namespace}-page .image-uploader`)
-// 		.css({'background-image':`url(${folder+name}`})
-// }
 
 const makeUploaderImage = (el, name, folder='') => {
-	$(el).parent().css({'background-image':`url(${folder+name}`}).addClass('picked')
+	$(el).parent().css({'background-image':`url('${folder+name}')`}).addClass("picked")
 		.prev().val(folder+name);
 }
 
-
-
-// const makeAnimalUploaderImage = ({namespace,folder,name}) => {
-// 	console.log(namespace,folder,name)
-// 	$(`#${namespace}-image`).val(folder+name);
-// 	$(`#${namespace}-page .animal-image-uploader`)
-// 		.css({'background-image':`url(${folder+name}`})
-// }
 
 
 
@@ -75,7 +49,6 @@ const makeAnimalProfile = templater(o=>`
 		<div class="animal-profile-image">
 			<img src="${o.img}" alt="">
 		</div>
-		
 		<h2 style="margin:0; padding:0.5em 0">${o.name}</h2>
 		<div class="small-text" style="padding-bottom:1em"><strong>Last Created</strong> ${o.date_create}</div>
 
@@ -85,6 +58,10 @@ const makeAnimalProfile = templater(o=>`
 		<div><strong>Color</strong> ${o.color}</div>
 
 		<div><p>${o.description}</p></div>
+
+		<div class="floater right top">
+			<a href="#animal-edit-page" class="btn-circle-blue"><span class="material-icons icon-edit">edit</span></a>
+		</div>
 	</div>
 	`);
 
@@ -123,19 +100,19 @@ const FormControl = ({namespace,name,displayname,type,placeholder,value}) => {
 const makeUserEditForm = o => `
 ${FormControl({
 	namespace:'user-edit',
-	name:'username',
-	displayname:'Username',
-	type:'text',
-	placeholder:'Type your username',
-	value:o.username
-})}
-${FormControl({
-	namespace:'user-edit',
 	name:'name',
 	displayname:'Full Name',
 	type:'text',
 	placeholder:'Type your full name',
 	value:o.name
+})}
+${FormControl({
+	namespace:'user-edit',
+	name:'username',
+	displayname:'Username',
+	type:'text',
+	placeholder:'Type your username',
+	value:o.username
 })}
 ${FormControl({
 	namespace:'user-edit',
@@ -154,20 +131,30 @@ ${FormControl({
 	value:o.favorite_animal
 })}
 <div class="form-control">
-   <label for="animal-edit-about_me" class="form-label">Description</label>
-   <textarea id="animal-edit-about_me" class="form-input" data-role="none" placeholder="Tell us about you" style="height:6em">${o.about_me}</textarea>
+   <label for="user-edit-about_me" class="form-label">About Me</label>
+   <textarea id="user-edit-about_me" class="form-input" data-role="none" placeholder="" style="height:6em">${o.about_me}</textarea>
 </div>
 `;
 
 
 
+
+
+// <div class="animal-profile-image display-flex flex-justify-center">
+// 	<img src="${o.img}">
+// 	<div class="floater right bottom">
+// 		<a href="#animal-upload-page" class="btn-circle" style="color: var(--color-main-medium)"><span class="material-icons icon-edit">edit</span></a>
+// 	</div>
+// </div>
+
 const makeAnimalEditForm = o => `
-<div class="animal-profile-image display-flex flex-justify-center">
-	<img src="${o.img}">
-	<div class="floater right bottom">
-		<a href="#animal-upload-page" class="btn-circle" style="color: var(--color-main-medium)"><span class="material-icons icon-edit">edit</span></a>
-	</div>
+<div>
+	<input type="hidden" id="animal-edit-image" value="${o.img}">
+	<label class="image-uploader thumbnail picked" style="background-image:url('${o.img}')">
+	   <input type="file" data-role="none" id="animal-edit-input">
+	</label>
 </div>
+
 ${FormControl({
 	namespace:'animal-edit',
 	name:'name',
@@ -235,7 +222,7 @@ const drawAnimalList = (a, empty_phrase=`<div class="animallist-name" style="pad
 
 
 
-const capitalize = s => s[0].toUpperCase()+s.substr(1);
+const capitalize = s => s== '' ? '' : s[0].toUpperCase()+s.substr(1);
 
 const filterList = (animals,breed) => {
 	let a = [...(new Set(animals.map(o=>o[breed])))];

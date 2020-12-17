@@ -65,12 +65,7 @@ const UserProfilePage = async() => {
 	console.log(d);
 
 	$("#user-profile-page .profile").html(makeUserProfile(d.result))
-
-	// $("#user-profile-page .activity").html(makeUserActivityList(d.result))
-
 }
-
-
 
 const UserEditPage = async() => {
 	let d = await query({type:'user_by_id',params:[sessionStorage.userId]});
@@ -80,28 +75,23 @@ const UserEditPage = async() => {
 	$("#user-edit-form").html(makeUserEditForm(d.result[0]))
 }
 
-
 const UserUploadPage = async() => {
-	query({type:'user_by_id',params:[sessionStorage.userId]})
+	query({
+		type:'user_by_id',
+		params:[sessionStorage.userId]})
 	.then(d=>{
-		makeUploaderImage({
-			namespace:'user-upload',
-			folder:'',
-			name:d.result[0].img
-		})
-	})
-}
-
-// const AnimalUploadPage = async() => {
-// 	query({type:'animal_by_id',params:[sessionStorage.animalId]})
-// 	.then(d=>{
-// 		makeAnimalUploaderImage({
-// 			namespace:'animal-upload',
+// 		makeUploaderImage({
+// 			namespace:'user-upload',
 // 			folder:'',
 // 			name:d.result[0].img
 // 		})
 // 	})
 // }
+		console.log(d)
+		makeUploaderImage($("#user-upload-input"),d.result[0].img)
+		});
+	}
+
 
 
 

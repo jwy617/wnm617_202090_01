@@ -14,9 +14,9 @@
 	--color-neutral-medium: #888;
 	--color-neutral-dark: #444;
 
-    --color-main-light: #d5fffe;
-    --color-main-medium: #0000FF;
-    --color-main-dark: #10107b;
+	--color-main-light: #ececf8;
+	--color-main-medium: #0000FF;
+	--color-main-dark: #090945;
 
 
 	--color-white: #fff;
@@ -33,10 +33,15 @@ body {
 	margin: 0;
 	font-size: 100%;
 	font-family: 'Roboto', sans-serif;
-	/*background-color: var(--color-neutral-lighter);	*/
+	color: var(--color-main-dark);
 }
 
-h1,
+h1 {
+	font-family: 'Chivo', sans-serif;
+	font-weight: bold;
+	color: var(--color-white);
+}
+
 h2,
 h3,
 h4,
@@ -44,6 +49,7 @@ h5,
 h6 {
 	font-family: 'Chivo', sans-serif;
 	font-weight: bold;
+	color: var(--color-main-dark);
 }
 .small-text {
 	font-size: 0.8em;
@@ -117,7 +123,7 @@ a {
 	width: 100%;
 	display: inline-block;
 	border-width: 0;
-	background-color: var(--color-neutral-lighter);
+	background-color: var(--color-white);	
 	padding: 0.7em 1em;
 	border-radius: 0.3em;
 	font: inherit;
@@ -141,6 +147,7 @@ a {
 	outline: 0;
 	text-align: center;
 	text-decoration: none;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
 .form-button:hover{
 	text-decoration: none;
@@ -153,10 +160,11 @@ a {
 	background-color: var(--color-white);
 	padding: 0.7em 1em;
 	border-radius: 0.3em;
+	border: 1px solid var(--color-error);
 	font: inherit;
 	color: var(--color-error);
 	font-weight: bold;
-	outline: 0;
+	/*outline: 0;*/
 	text-align: center;
 	text-decoration: none;
 }
@@ -184,7 +192,7 @@ a {
 	border-radius: 0;
 	background-color: transparent;
 	font: inherit;
-	color: inherit;
+	color: var(--color-black);
 	outline: 0;
 	padding: 0;
 }
@@ -222,6 +230,7 @@ a {
 	height: 100%;
 	top: 0;
 	left: 0;
+	background-color: var(--color-main-light);
 }
 [data-role='main'] {
 	flex: 1 1 100%;
@@ -234,6 +243,7 @@ a {
 	line-height: var(--header-height);
 	border-width: 0;
 	background-color: var(--color-main-medium);
+	color: var(--color-white);
 	box-shadow: 0 0 5px rgba(0,0,0,0.15);
 	position: relative;
 	overflow: hidden;
@@ -258,6 +268,7 @@ a {
 	width: 100%;
 	text-align: center;
 	z-index: 1;
+	opacity: 70%;
 }
 
 
@@ -326,15 +337,16 @@ a {
 	width: 100%;
 	height: 100%;
 }
-.favicon {
-	width: 1.5em;
-	height: 1.5em;
-	vertical-align: text-bottom;
-}
 .icon {
 	width: 1.5em;
 	height: 1.5em;
 	vertical-align: text-bottom;
+}
+.icon-back {
+	width: 1.5em;
+	height: 1.5em;
+	margin-top: 1em;
+	/*vertical-align: text-bottom;*/
 }
 .ui-header .icon {
 	vertical-align: middle;
@@ -502,6 +514,19 @@ a {
 .btn-circle {
 	display: inline-block;
 	background-color: var(--color-white);
+	color: var(--color-main-medium);
+	width: 3rem;
+	height: 3rem;
+	line-height: 3rem;
+	text-align: center;
+	font-size: 1.5em;
+	border-radius: 2em;
+	box-shadow: 2px 2px 5px rgba(0,0,0,0.15);
+}
+.btn-circle-blue {
+	display: inline-block;
+	background-color: var(--color-main-medium);
+	color: var(--color-white);
 	width: 3rem;
 	height: 3rem;
 	line-height: 3rem;
@@ -543,6 +568,10 @@ a {
 .settings-list a {
 	padding: 1.5em;
 }
+.settings-list a:hover {
+	text-decoration: none;
+	cursor: pointer;
+}
 .settings-list li:not(:first-child) {
 	border-top: 1px solid var(--color-neutral-light);
 }
@@ -564,55 +593,33 @@ a {
 
 
 /*AVATAR*/
-.profile-user {
+/*.profile-user {
 	background-color: var(--color-neutral-light);
 	color: white;
 	text-align: center;
 	padding: 3em 0 1em;
 }
 .profile-avatar {
-/*	margin-top: 3em;
-	margin-bottom: 3em;*/
 	width: 30%;
 }
+*/
 
 
 
-
-/* PROFILE */
-.animal-profile {
-	padding: 1em;
-}
-/*.animal-profile-image img {
-	margin: 0;
-	padding: 0;
-	object-fit: cover;
-	width: 100%;
-	height: calc(50vmin - 2em);
-}*/
-
-.animal-profile-image {
-	position: relative;
-}
-.animal-profile-image>img {
-	width: 100%;
-	height: calc(50vmin - 2em);
-	object-fit: cover;
-}
-
-
+/* USER PROFILE */
 .user-profile-image {
 	position: relative;
 }
 .user-profile-image>img {
-	width: calc(50vmin - 4em);
+/*	width: calc(50vmin - 4em);
 	height: calc(50vmin - 4em);
 	margin: 2em;
-	border-radius: 50%;
+	border-radius: 50%;*/
 	object-fit: cover;
+	width: 100%;
 }
 .profile-containter {
-	/*padding: 4vh 0 4vh;*/
+	padding: 8vh 0;
 	text-align: center;
 	display: flex;
 	flex-direction: column;
@@ -695,7 +702,7 @@ a {
 	flex-direction: column;
 }
 .profile-top {
-	height: 300px;
+	height: 250px;
 	flex: none;
 	overflow:auto;
 	position:relative;
@@ -706,18 +713,50 @@ a {
 	overflow: auto;
 }
 
-.animal-popup {
+.animal-profile {
+	padding: 1em;
+}
+/*.animal-profile-image img {
+	margin: 0;
+	padding: 0;
+	object-fit: cover;
+	width: 100%;
+	height: calc(50vmin - 2em);
+}*/
+
+
+.animal-profile-image {
+	position: relative;
+}
+.animal-profile-image>img {
+/*	width: 100%;
+	height: calc(50vmin - 2em);
+	object-fit: cover;*/
+	width: calc(50vmin - 2em);
+	height: calc(50vmin - 2em);
+	border-radius: 0.3em;
+	background-position: center;
+	background-size: cover;
+	position: relative;
+	/*border: 2px solid white;*/
+
+}
+
+
+/*.animal-popup {
 	width: auto;
 	overflow: hidden;
-}
+}*/
 .animal-popup img {
-	width: 100%;
-	height: 80px;
-	object-fit: cover;
+	width: 5em;
+	height: 5em;
+	border-radius: 0.3em;
+	border: 2px solid white;
+
 }
 .animal-popup h2 {
 	margin: 0px;
-	padding-bottom: 0.2em;
+	padding-bottom: 0.5em;
 }
 .animal-popup-description {
 	padding: 0.5em;
@@ -743,18 +782,21 @@ a {
 .filter-list {
 	display: flex;
 	overflow: auto;
+	white-space: nowrap;
 }
 .filter {
 	padding: 0 0.5em;
 	font-weight: bold;
-	cursor:pointer;
+	cursor: pointer;
 }
 
 
 
 
 
-
+/*.ui-mobile label.image-uploader {
+	margin: 0;
+}*/
 .image-uploader input {
 	display: none;
 }
@@ -764,24 +806,37 @@ a {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-position:center;
-	background-size:contain;
-	background-repeat:no-repeat;
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
 }
 
 
-.animal-image-uploader input {
-	display: none;
+.image-uploader.thumbnail {
+	width: 5em;
+	height: 5em;
+	border-radius: 0.3em;
+	background-position: center;
+	background-size: cover;
+	position: relative;
+	border: 2px solid white;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 }
-.animal-image-uploader.full {
+/* This will add the floating plus symbol to the image picker*/
+.image-uploader.thumbnail::before {
+	color: var(--color-main-medium);
+	content: '+';
 	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-position:center;
-	background-size:contain;
-	background-repeat:no-repeat;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	vertical-align: middle;
+	font-size: 2em;
+}
+/* This will hide the floating plus symbol to the image picker*/
+.image-uploader.thumbnail.picked::before {
+	content: '';
+	/*z-index: -1;*/
 }
 
 

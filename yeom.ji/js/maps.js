@@ -36,8 +36,8 @@ const makeMarkers = (map_el,map_locs,setbounds=true) => {
 		if(o.icon) pos.icon = {
 			url: o.icon,
 			scaledSize: {
-				width:40,
-				height:40  
+				width:50,
+				height:50
 			}
 		};
 		let m = new google.maps.Marker(pos);
@@ -91,7 +91,7 @@ const mapStyles = [
         "featureType": "landscape",
         "stylers": [
             {
-                "hue": "#FFBB00"
+                "hue": "#0000FF"
             },
             {
                 "saturation": 43.400000000000006
@@ -111,7 +111,7 @@ const mapStyles = [
                 "hue": "#FFC200"
             },
             {
-                "saturation": -61.8
+                "saturation": -30
             },
             {
                 "lightness": 45.599999999999994
@@ -176,7 +176,7 @@ const mapStyles = [
         "featureType": "poi",
         "stylers": [
             {
-                "hue": "#00FF6A"
+                "hue": "#0000FF"
             },
             {
                 "saturation": -1.0989010989011234
@@ -190,3 +190,5 @@ const mapStyles = [
         ]
     }
 ]
+
+
