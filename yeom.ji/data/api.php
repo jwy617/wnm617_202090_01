@@ -148,7 +148,7 @@ function makeStatement($data) {
 				`track_users`
 				(`name`,`username`,`email`,`password`,`favorite_animal`,`about_me`,`img`,`date_create`)
 				VALUES 
-				('', ?, ?, md5(?), ?, ?, 'https://via.placeholder.com/400?text=USER', NOW())
+				('', ?, ?, md5(?), '', '', 'https://via.placeholder.com/400?text=USER', NOW())
 	            ",$p);
 			return ["id"=>$c->lastInsertId()];
 
@@ -159,7 +159,7 @@ function makeStatement($data) {
 					(`user_id`,`name`,`gender`,`breed`,`size`,`color`,`description`,`img`,`date_create`)
 					VALUES
 					(?, ?, ?, ?, ?, ?, ?, 'http://via.placeholder.com/400?text=ANIMAL', NOW())
-				",$p);
+					",$p);
 			return ["id"=>$c->lastInsertId()];
 
 		case "insert_location":
